@@ -16,9 +16,13 @@ Lastly, we’ll analyze how box office successes shape genre proliferation, inve
 
 ## Proposed additional datasets (if any):
 
-To complete this analysis, we plan to integrate additional data on historical events, such as databases of world events or lists of landmark years (wars, economic crises, major political events, etc.). This will enable us to cross-reference film release dates with specific periods to study possible correlations between current events and genre popularity.
+To complete our analysis, we plan to integrate an additional dataset on major historical events, such as the ‘World Important Events - Ancient to Modern’ dataset. This dataset covers a variety of periods, from ancient civilisations to the modern era, and includes major events such as wars, economic crises, political revolutions and technological advances.
 
-If necessary, we can consider creating our own set of relevant events by selecting keywords or choosing the most influential events of each decade. This could be achieved by using text processing tools (NLP) to recognize specific terms in film summaries. The feasibility and accuracy of this approach will be assessed in the early stages of the project.
+Integrating this historical information will allow us to cross-reference film release dates with specific periods of significant events to explore potential correlations between historical context and the popularity of film genres. For example, we can examine whether war films are produced more during or after periods of conflict, or whether comedies gain in popularity during periods of economic crisis.
+
+The dataset's columns, such as ‘Type of Event’, ‘Impact’ and ‘Outcome’, will allow us to group and classify events into categories (e.g. wars, social advances) and analyse their potential influence on the types of films produced at different times.
+
+This additional dataset will provide a solid basis for enriching our analysis, helping us to understand how historical events shape audience preferences and influence film production.
 
 ## Methods
 
@@ -31,9 +35,9 @@ We will use the following methods to analyse the data:
 
 ## Proposed timeline
 
-03/11: Have found a complementary dataset containing the historical events we want to analyze. Consider its use: for example, can we recognize keywords like “war” or “politics”, and check whether our analysis method is feasible? If not, determine whether it's possible to create this dataset ourselves by selecting the relevant events.
+04/11: Have found a complementary dataset containing the historical events we want to analyze. Consider its use: for example, can we recognize keywords like “war” or “politics”, and check whether our analysis method is feasible? If not, determine whether it's possible to create this dataset ourselves by selecting the relevant events.
 
-05/11: Clean up the data and assess the feasibility of the project by carrying out preliminary analyses to check data quality, accuracy of genre extractions and possible correlations with historical events.
+05/11: Clean up the data and additional dataset and assess the feasibility of the project by carrying out preliminary analyses to check data quality, accuracy of genre extractions and possible correlations with historical events.
 
 
 ## Questions for TAs (optional): 
