@@ -1,4 +1,4 @@
-# Historical and sociocultural analysis of film genre trends: impact of world events and box office successes.
+# Historical and sociocultural analysis of film genre trends: Impact of world events and box office successes
 
 ## Abstract: 
 
@@ -36,9 +36,9 @@ We will use the following methods to analyse the data:
 
 -> 04/11: Have found a complementary dataset containing the historical events we want to analyze. Consider its use: for example, can we recognize keywords like “war” or “politics”, and check whether our analysis method is feasible? If not, determine whether it's possible to create this dataset ourselves by selecting the relevant events.
 
+-> 05/11: Clean up the data and additional dataset and assess the feasibility of the project by carrying out preliminary analyses to check data quality, accuracy of genre extractions and possible correlations with historical events.
 
---> 05/11: Clean up the data and additional dataset and assess the feasibility of the project by carrying out preliminary analyses to check data quality, accuracy of genre extractions and possible correlations with historical events.
-
+-> 08/11: Have coded, plotted and analysed as many things as possible before asking the TA questions about what they think.
 
 ## Questions for TAs (optional): 
 
