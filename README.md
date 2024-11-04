@@ -34,14 +34,38 @@ We will use the following methods to analyse the data:
 
 ## Proposed timeline
 
+-> 01/11: Choice of subject and refining.
+
 -> 04/11: Have found a complementary dataset containing the historical events we want to analyze. Consider its use: for example, can we recognize keywords like “war” or “politics”, and check whether our analysis method is feasible? If not, determine whether it's possible to create this dataset ourselves by selecting the relevant events.
 
 -> 05/11: Clean up the data and additional dataset and assess the feasibility of the project by carrying out preliminary analyses to check data quality, accuracy of genre extractions and possible correlations with historical events.
 
 -> 08/11: Have coded, plotted and analysed as many things as possible before asking the TA questions about what they think.
 
+## Organization within the team:
+
+- 01/11: (All members) Meeting of all members to present and discuss ideas. Choice of a common idea, then refinement according to the interests and desired impact of the project.
+
+- 03/11: (Sarah) Writing of the README, including the title, abstract, research questions, informations about the complementary datset, methods and preliminary timetable. Reflection on the general structure of the project.
+
+- 04/11: (Laurine and Sarah) Selection, exploration and reflection on a complementary dataset. Discussion of the possibilities for enrichment and the usefulness of this dataset in answering the research questions.
+(Sarah) Movies dataset: Obtain an overview of missing values, distributions (for example, of the most popular genres), and the period covered by the data (years). Additional dataset: explore and create categories useful for analysis, such as ‘war’, ‘economic crisis’, ‘period of stability’, etc.
+
+- 05/11 -> 10/11 :
+Data cleansing (?): Initial cleansing of the main dataset, management of missing values, transformation of temporal data for analysis.
+Documentation and preparation of the pipeline (who?): Setting up the data processing pipeline with clear documentation for each stage.
+Initial exploratory analysis and preliminary visualisations (who?): Creation of initial graphs to identify gender trends by historical period.
+
+- 11/11 -> 13/11 :
+Implementation of correlation and textual analysis methods (who?): Use of NLP to extract historical themes from film summaries, and analysis of correlations between historical events and genres.
+Documentation of methods and mathematical justifications (Laurine): Presentation in the notebook of the methods used and their relevance to the project.
+
+- 14/11:
+Revision of the notebook and consolidation of the results (all members): Checking the consistency of the analyses, adding text descriptions to explain each section of the notebook. Final check of the visualisations and adjustment of the analyses according to the team's comments.
+
+- 15/11: Finalisation of the project. Final check of the GitHub repository (README, file and code structure). Submission of the project before midnight.
+
 ## Questions for TAs (optional): 
 
 - Any recommendations on specific natural language processing methods for detecting correlations between events and genres?
-- Any suggestions on historical event datasets that could be used to complement our analysis?
 - Advice on how to interpret correlations between box office success and genre proliferation (e.g.: criteria for measuring “success”)?
