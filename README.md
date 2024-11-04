@@ -9,21 +9,35 @@ Lastly, we’ll analyze how box office successes shape genre proliferation, inve
 
 ## Research Questions:
 
-A list of research questions you would like to address during the project.
+- How do major historical events influence genre trends in cinema?
+- Are American culture and globalization changing genre preferences worldwide? How do these influences manifest themselves?
+- To what extent do box office successes affect the proliferation of a specific genre? How long after a success do similar films gain in popularity?
+- Which genres tend to increase or decrease in popularity during different historical periods (e.g., wars, economic crises)?
 
 ## Proposed additional datasets (if any):
-List the additional dataset(s) you want to use (if any), and some ideas on how you expect to get, manage, process, and enrich it/them. Show us that you’ve read the docs and some examples, and that you have a clear idea on what to expect. Discuss data size and format if relevant. It is your responsibility to check that what you propose is feasible.
+
+To complete this analysis, we plan to integrate additional data on historical events, such as databases of world events or lists of landmark years (wars, economic crises, major political events, etc.). This will enable us to cross-reference film release dates with specific periods to study possible correlations between current events and genre popularity.
+
+If necessary, we can consider creating our own set of relevant events by selecting keywords or choosing the most influential events of each decade. This could be achieved by using text processing tools (NLP) to recognize specific terms in film summaries. The feasibility and accuracy of this approach will be assessed in the early stages of the project.
 
 ## Methods
 
+We will use the following methods to analyse the data:
+
+1) Temporal analysis of genres: Visualise the evolution of genres over time, identifying periods of high popularity for certain genres.
+2) Extraction of trends and correlations: Use natural language processing (NLP) techniques to recognise historical themes and events mentioned in film summaries, and establish correlations with genres.
+3) Analysing the influence of box office success: Identify successful films by genre, then observe the popularity of similar genres in subsequent years.
+4) Visualisation and interpretation: Present visualisations (stacked area graphs, timelines, heatmaps, etc.) to make the results easy to interpret.
+
 ## Proposed timeline
 
---> 03/11: Have found a complementary dataset containing the historical events we want to analyze, and consider its use: for example, do we recognize keywords such as “war” or “politics”, and check whether our analysis method is feasible?
-Or have chosen if we want to create it ourselves, by selecting the events that interest us.
+03/11: Have found a complementary dataset containing the historical events we want to analyze. Consider its use: for example, can we recognize keywords like “war” or “politics”, and check whether our analysis method is feasible? If not, determine whether it's possible to create this dataset ourselves by selecting the relevant events.
 
---> 05/11: Check whether the project is feasible by carrying out primary analyses.
-
+05/11: Clean up the data and assess the feasibility of the project by carrying out preliminary analyses to check data quality, accuracy of genre extractions and possible correlations with historical events.
 
 
 ## Questions for TAs (optional): 
-Add here any questions you have for us related to the proposed project.
+
+- Any recommendations on specific natural language processing methods for detecting correlations between events and genres?
+- Any suggestions on historical event datasets that could be used to complement our analysis?
+- Advice on how to interpret correlations between box office success and genre proliferation (e.g.: criteria for measuring “success”)?
