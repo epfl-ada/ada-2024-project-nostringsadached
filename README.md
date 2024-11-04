@@ -49,16 +49,9 @@ We will use the following methods to analyse the data:
 - 03/11: (Sarah) Writing of the README, including the title, abstract, research questions, informations about the complementary datset, methods and preliminary timetable. Reflection on the general structure of the project.
 
 - 04/11: (Laurine and Sarah) Selection, exploration and reflection on a complementary dataset. Discussion of the possibilities for enrichment and the usefulness of this dataset in answering the research questions.
-(Sarah) Movies dataset: Obtain an overview of missing values, distributions (for example, of the most popular genres), and the period covered by the data (years). Additional dataset: explore and create categories useful for analysis, such as ‘war’, ‘economic crisis’, ‘period of stability’, etc.
+(Sarah) Structuring the project by adding files to the src and test folders, creating empty shells for each cleaning and vectorisation function. These are code skeletons containing function definitions that will be completed later, but which already show a clear intention of the data processing steps. Organising the results.ipynb notebook, integrating the calls to these functions while clearly detailing our intentions, in order to document the data processing process and ensure a fluid understanding of the data pipeline.
 
-- 05/11 -> 10/11 :
-Data cleansing (?): Initial cleansing of the main dataset, management of missing values, transformation of temporal data for analysis.
-Documentation and preparation of the pipeline (who?): Setting up the data processing pipeline with clear documentation for each stage.
-Initial exploratory analysis and preliminary visualisations (who?): Creation of initial graphs to identify gender trends by historical period.
-
-- 11/11 -> 13/11 :
-Implementation of correlation and textual analysis methods (who?): Use of NLP to extract historical themes from film summaries, and analysis of correlations between historical events and genres.
-Documentation of methods and mathematical justifications (Laurine): Presentation in the notebook of the methods used and their relevance to the project.
+-[Complete...]
 
 - 14/11:
 Revision of the notebook and consolidation of the results (all members): Checking the consistency of the analyses, adding text descriptions to explain each section of the notebook. Final check of the visualisations and adjustment of the analyses according to the team's comments.
