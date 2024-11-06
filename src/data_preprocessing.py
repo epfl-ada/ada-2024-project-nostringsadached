@@ -4,6 +4,7 @@ import pandas as pd
 movies_data = pd.read_csv("data/MovieSummaries/movie.metadata.tsv", delimiter='\t') # Columns are separated by tabs rather than commas
 history_data = pd.read_csv("data/HistoricalDataset/historical.dataset.csv")
 
+
 def clean_movie_data(data):
     # Exemple de nettoyage : supprimer les valeurs manquantes
     # Transformer les formats de dates pour l’analyse temporelle
