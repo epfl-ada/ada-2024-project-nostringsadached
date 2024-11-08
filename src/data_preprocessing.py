@@ -5,6 +5,7 @@ movies_data = pd.read_csv("data/MovieSummaries/movie.metadata.tsv", delimiter='\
 history_data = pd.read_csv("data/HistoricalDataset/historical.dataset.csv")
 
 
+
 def clean_movie_data(data):
     # Exemple de nettoyage : supprimer les valeurs manquantes
     # Transformer les formats de dates pour l’analyse temporelle
@@ -34,6 +35,9 @@ def clean_historical_data(data_movie, data_history):
     
     # remove historical events that happened before the first movie was released
     cleaned_data_history = cleaned_data_history[cleaned_data_history['Year'] >= first_movie_year]
+    
+    # drop columns that we don't need
+    cleaned_data_history.drop(columns=["Place Name","Date", "Month"], inplace=True)
     
     return cleaned_data_history.dropna()
 
