@@ -1,4 +1,6 @@
+# Ignore python cache file
 __pycache__/
+*.py[cod]
 
 
 #Jupyter Notebook
