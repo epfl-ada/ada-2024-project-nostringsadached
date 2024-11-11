@@ -29,3 +29,17 @@ def outliers_bounds(data, low_factor, up_factor):
 def replace_in_columns(data, column, old, new):
     data[column] = data[column].replace(old, new)
     return data
+
+def filter_genres(genre_list, unwanted_genres):
+    if isinstance(genre_list, str):
+        genres = genre_list.split(', ')
+        filtered_genres = [genre for genre in genres if genre not in unwanted_genres]
+        return ', '.join(filtered_genres)
+    return genre_list
+
+def keep_only_the_most_common_genres(genre_list, genre_counts):
+    if isinstance(genre_list, str):
+        genres = genre_list.split(', ')
+        filtered_genres = [genre for genre in genres if genre in genre_counts['Genres'].values]
+        return ', '.join(filtered_genres)
+    return genre_list
