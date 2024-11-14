@@ -1,1 +1,0 @@
-#Calculs d'analyse de base, statistiques etc..

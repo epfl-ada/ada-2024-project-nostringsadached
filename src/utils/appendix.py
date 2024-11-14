@@ -1,5 +1,6 @@
 import pandas as pd
 import ast
+import numpy as np
 
 def extract_names(cell):
     #Transform the string of dictionaries into a list of real dictionaries with the id referring to the key and the name referring to the value
@@ -43,3 +44,17 @@ def keep_only_the_most_common_genres(genre_list, genre_counts):
         filtered_genres = [genre for genre in genres if genre in genre_counts['Genres'].values]
         return ', '.join(filtered_genres)
     return genre_list
+
+def most_common_genres(movies, genre_counts, top_n):
+    movies_common_genre = movies.copy()
+
+    #keep only the n top genres and replace the empty line by nan values
+    movies_common_genre['Genres'] = movies_common_genre['Genres'].apply(lambda x: keep_only_the_most_common_genres(x, genre_counts=genre_counts))
+    movies_common_genre['Genres'] = movies_common_genre['Genres'].apply(lambda x: np.nan if x == '' else x)
+    
+    #compute the portion of film qualified by the top n genre
+    total = len(movies)
+    covered = total - movies_common_genre['Genres'].isna().sum()
+    coverage = (covered / total) * 100
+    
+    return movies_common_genre, coverage
