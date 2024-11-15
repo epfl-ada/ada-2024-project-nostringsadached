@@ -2,7 +2,7 @@
 
 ## Abstract: 
 
-This project explore the historical evolution of film genres, examining how societal and historical contexts influence trends in cinema. 
+This project explores the historical evolution of film genres, analyzing how societal and historical contexts have influenced trends in cinema.
 
 By analyzing the impact of major world events, we seek to understand how periods of conflict, economic upheaval, or stability shape audience preferences and genre popularity. For instance, we will investigate whether genres like war films or escapist comedies surge during turbulent times. Additionally, we will assess the influence of American culture and globalization on international cinema, examining how trends in U.S. films impact global production. 
 
