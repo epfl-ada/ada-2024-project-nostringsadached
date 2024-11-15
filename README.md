@@ -3,15 +3,17 @@
 ## Abstract: 
 
 This project explore the historical evolution of film genres, examining how societal and historical contexts influence trends in cinema. 
+
 By analyzing the impact of major world events, we seek to understand how periods of conflict, economic upheaval, or stability shape audience preferences and genre popularity. For instance, we will investigate whether genres like war films or escapist comedies surge during turbulent times. Additionally, we will assess the influence of American culture and globalization on international cinema, examining how trends in U.S. films impact global production. 
+
 Lastly, we’ll analyze how box office successes shape genre proliferation, investigating if highly successful films lead to a rise in similar productions. This research aims to uncover the interplay between cinema, historical context, and cultural diffusion, telling a broader story of how global and national phenomena shape what audiences see on screen.
 
 ## Research Questions:
 
-1) How do major historical events influence trends in cinema genres?
+* How do major historical events influence trends in cinema genres?
 Which genres gain or lose popularity during historical periods such as wars or economic crises?
-2) To what extent do American culture and globalization shape genre preferences worldwide?
-3) How do box office successes affect the proliferation of specific genres, and over what time span?
+* To what extent do American culture and globalization shape genre preferences worldwide?
+* How do box office successes affect the proliferation of specific genres, and over what time span?
 
 ## Proposed additional datasets (if any):
 
