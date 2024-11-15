@@ -17,13 +17,15 @@ Which genres gain or lose popularity during historical periods such as wars or e
 
 ## Proposed additional dataset:
 
-We have integrated a dataset on major historical events, the World Important Events: Ancient to Modern dataset. Key features include:
+We have integrated a dataset on major historical events, the <u>*World Important Events: Ancient to Modern*</u> dataset . Key features include:
 
 Type of Event: Categorization of events (e.g., wars, revolutions, economic crises).
+
 Impact and Outcome: Information on the severity and consequences of events.
-And other information such as the Name of Incident, the date, the country, Affected Population and Important Person/Group Responsible.
+
+And other information such as the Name of Incident, the date, the concernetcountry, the Affected Population and the Important Person/Group Responsible.
 This dataset covers a variety of periods, from ancient civilisations to the modern era, and includes major events such as wars, economic crises, political revolutions and technological advances.
-Integrating this historical information will allow us to cross-reference film release dates with historical periods to investigate correlations between world events and genre trends. For instance, we can analyze whether war films increase during conflicts or comedies dominate during economic instability.
+Integrating this historical information will allow us to cross-reference film release dates with historical periods to investigate correlations between world events and genre trends. For instance, we can analyze whether war films increase during conflicts or comedies dominate during economic instability or if an event with a positive outcome in the country changes the preferences in genre movies of citizens.
 
 The dataset's columns, such as ‘Type of Event’, ‘Impact’ and ‘Outcome’, will allow us to group and classify events into categories (e.g. wars, social advances) and analyse their potential influence on the types of films produced at different times.
 
@@ -59,34 +61,34 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 ## Proposed timeline
 
--> 01/11: Choice of subject and refining.
+⟶ 01/11: Choice of subject and refining.
 
--> 05/11: Have found a complementary dataset containing the historical events we want to analyze. Consider its use: for example, can we recognize keywords like “war” or “politics”, and check whether our analysis method is feasible? If not, determine whether it's possible to create this dataset ourselves by selecting the relevant events.
+⟶ 05/11: Have found a complementary dataset containing the historical events we want to analyze. Consider its use: for example, can we recognize keywords like “war” or “politics”, and check whether our analysis method is feasible? If not, determine whether it's possible to create this dataset ourselves by selecting the relevant events.
 
--> Until 15/11 : Data Handling and Preprocessing & Initial Exploratory Data Analysis (EDA)
+⟶ Until 15/11 : Data Handling and Preprocessing & Initial Exploratory Data Analysis (EDA)
 
--> 15/11: Finalize visualizations, results, and repository structure. Submit the project.
+⟶ 15/11: Finalize visualizations, results, and repository structure. Submit the project.
 
 ## Organization within the team:
 
-- 01/11: (All members) Initial meeting to present and discuss ideas. Selection of a common project topic, followed by refinement based on team interests and project goals.
+▪️ 01/11: (All members) Initial meeting to present and discuss ideas. Selection of a common project topic, followed by refinement based on team interests and project goals.
 
-- 04/11: (Laurine) Exploration and selection of the complementary dataset.
+▪️ 04/11: (Laurine) Exploration and selection of the complementary dataset.
   
-- 03/11 - 06/11: (Sarah) Drafting the README, including the title, abstract, research questions, information about the complementary dataset, methods, and a preliminary timeline. Reflection on the general structure of the project. Organized the project structure by creating files and code skeletons in src folder, and preparing the results notebook with a timeline and clear documentation for data processing steps.
+▪️ 03/11 - 06/11: (Sarah) Drafting the README, including the title, abstract, research questions, information about the complementary dataset, methods, and a preliminary timeline. Reflection on the general structure of the project. Organized the project structure by creating files and code skeletons in src folder, and preparing the results notebook with a timeline and clear documentation for data processing steps.
 
-- 07/11 - 14/11:
+▪️ 07/11 - 14/11:
 
 (Lucile) Preprocessed the movie dataset and conducted a case study on war movies.
 (Diane) Focused on the exploratory data analysis (EDA) of the movie dataset.
 (Laurine) Preprocessed the historical dataset, prepared it for integration and started a case study on historical events in India.
 (Nouchine) Helped structure the project, documented progress for each step, and contributed to the preliminary analysis of the datasets.
 
-- 14/11: (All members) Reviewed the notebook and consolidated results. Ensured consistency in analyses, added descriptive text for each section of the notebook, and finalized visualizations based on team feedback.Reviewed the notebook and consolidated results. Ensured consistency in analyses, added descriptive text for each section of the notebook, and finalized visualizations based on team feedback.
+▪️ 14/11: (All members) Reviewed the notebook and consolidated results. Ensured consistency in analyses, added descriptive text for each section of the notebook, and finalized visualizations based on team feedback.Reviewed the notebook and consolidated results. Ensured consistency in analyses, added descriptive text for each section of the notebook, and finalized visualizations based on team feedback.
 
--15/11: (Sarah) Conducted a full review of the project, made minor adjustments and corrections, and revised the README for submission. 
+▪️ 15/11: (Sarah) Conducted a full review of the project, made minor adjustments and corrections, and revised the README for submission. 
 
 ## Questions for TAs (optional): 
 
-- Any recommendations on how to regroup type of events and movie genres?
-- Is using NLP techniques to detect historical themes and events in film summaries a good idea? If not, should we only focus on the movie release date and the date of event?
+- Do you have any recommendations on how to group event types and movie genres together effectively?
+- Is using NLP techniques to detect historical themes and events in movie summaries a good approach? If not, should we focus solely on the movie release dates and the event dates?
