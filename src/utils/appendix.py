@@ -11,13 +11,15 @@ def extract_names(cell):
     except (ValueError, SyntaxError):
         return cell
     
-    
 def extract_year(date_str):
-    if len(date_str) == 4 and date_str.isdigit():
-        return date_str
+    if isinstance(date_str, str) and len(date_str) == 4 and date_str.isdigit():
+        return int(date_str)
     else:
-        # Use pd.to_datetime for other formats and extract year
-        return pd.to_datetime(date_str, errors='coerce').year
+        # Use pd.to_datetime for other formats and extract the year
+        try:
+            return pd.to_datetime(date_str, errors='coerce').year
+        except Exception:
+            return None
     
 def outliers_bounds(data, low_factor, up_factor):
     Q1 = data.quantile(0.25)
