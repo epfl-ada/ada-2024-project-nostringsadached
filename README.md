@@ -79,14 +79,14 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 ▪️ 07/11 - 14/11:
 
-(Lucile) Preprocessed the movie dataset and conducted a case study on war movies.
-(Diane) Focused on the exploratory data analysis (EDA) of the movie dataset.
-(Laurine) Preprocessed the historical dataset, prepared it for integration and started a case study on historical events in India.
-(Nouchine) Helped structure the project, documented progress for each step, and contributed to the preliminary analysis of the datasets.
+(Lucile) Preprocessed the movie dataset (columns formatting, missing values,) and conducted a case study on war movies. Analyzed the distribution of movies across different countries and genres.
+(Diane) (Diane) Focused on data cleaning and exploratory data analysis of the movie dataset, including handling missing values, identifying outliers and duplicates, formatting, and examining distributions. Also contributed to structuring the project and worked on the appendix.
+(Laurine) Preprocessed the historical dataset, prepared it for integration and started a case study on historical events in India. Completed the '.gitinore' and 'requirements' files.
+(Nouchine) Structured the project, documented progress for each step, and contributed to the preliminary analysis of the datasets. Conducted the bivariate analysis of events around the world.
 
 ▪️ 14/11: (All members) Reviewed the notebook and consolidated results. Ensured consistency in analyses, added descriptive text for each section of the notebook, and finalized visualizations based on team feedback.Reviewed the notebook and consolidated results. Ensured consistency in analyses, added descriptive text for each section of the notebook, and finalized visualizations based on team feedback.
 
-▪️ 15/11: (Sarah) Conducted a full review of the project, made minor adjustments and corrections, and revised the README for submission. 
+▪️ 15/11: (Sarah and Diane) Conducted a full review of the project, made minor adjustments and corrections, and revised the README for submission. 
 
 ## Questions for TAs (optional): 
 
