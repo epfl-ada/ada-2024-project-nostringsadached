@@ -15,7 +15,7 @@ Which genres gain or lose popularity during historical periods such as wars or e
 * To what extent do American culture and globalization shape genre preferences worldwide?
 * How do box office successes affect the proliferation of specific genres, and over what time span?
 
-## Proposed additional datasets (if any):
+## Proposed additional dataset:
 
 We have integrated a dataset on major historical events, the World Important Events: Ancient to Modern dataset. Key features include:
 
@@ -61,11 +61,11 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 -> 01/11: Choice of subject and refining.
 
--> 04/11: Have found a complementary dataset containing the historical events we want to analyze. Consider its use: for example, can we recognize keywords like “war” or “politics”, and check whether our analysis method is feasible? If not, determine whether it's possible to create this dataset ourselves by selecting the relevant events.
+-> 05/11: Have found a complementary dataset containing the historical events we want to analyze. Consider its use: for example, can we recognize keywords like “war” or “politics”, and check whether our analysis method is feasible? If not, determine whether it's possible to create this dataset ourselves by selecting the relevant events.
 
--> 05/11: Clean up the data and additional dataset and assess the feasibility of the project by carrying out preliminary analyses to check data quality, accuracy of genre extractions and possible correlations with historical events.
+-> Until 15/11 : Data Handling and Preprocessing & Initial Exploratory Data Analysis (EDA)
 
--> 08/11: Have coded, plotted and analysed as many things as possible before asking the TA questions about what they think.
+-> 15/11: Finalize visualizations, results, and repository structure. Submit the project.
 
 ## Organization within the team:
 
@@ -85,5 +85,5 @@ Revision of the notebook and consolidation of the results (all members): Checkin
 
 ## Questions for TAs (optional): 
 
-- Any recommendations on specific natural language processing methods for detecting correlations between events and genres?
-- Advice on how to interpret correlations between box office success and genre proliferation (e.g.: criteria for measuring “success”)?
+- Any recommendations on how to regroup type of events and movie genres?
+- Is using NLP techniques to detect historical themes and events in film summaries a good idea? If not, should we only focus on the movie release date and the date of event?
