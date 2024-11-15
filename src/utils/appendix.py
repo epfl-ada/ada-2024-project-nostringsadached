@@ -15,7 +15,7 @@ def extract_year(date_str):
     if isinstance(date_str, str) and len(date_str) == 4 and date_str.isdigit():
         return int(date_str)
     else:
-        # Use pd.to_datetime for other formats and extract the year
+        #for other formats 
         try:
             return pd.to_datetime(date_str, errors='coerce').year
         except Exception:
