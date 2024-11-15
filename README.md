@@ -69,19 +69,22 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 ## Organization within the team:
 
-- 01/11: (All members) Meeting of all members to present and discuss ideas. Choice of a common idea, then refinement according to the interests and desired impact of the project.
+- 01/11: (All members) Initial meeting to present and discuss ideas. Selection of a common project topic, followed by refinement based on team interests and project goals.
 
-- 03/11: (Sarah) Writing of the README, including the title, abstract, research questions, informations about the complementary datset, methods and preliminary timetable. Reflection on the general structure of the project.
+- 04/11: (Laurine) Exploration and selection of the complementary dataset.
+  
+- 03/11 - 06/11: (Sarah) Drafting the README, including the title, abstract, research questions, information about the complementary dataset, methods, and a preliminary timeline. Reflection on the general structure of the project. Organized the project structure by creating files and code skeletons in src folder, and preparing the results notebook with a timeline and clear documentation for data processing steps.
 
-- 04/11: (Laurine and Sarah) Selection, exploration and reflection on a complementary dataset. Discussion of the possibilities for enrichment and the usefulness of this dataset in answering the research questions.
-(Sarah) Structuring the project by adding files to the src and test folders, creating empty shells for each cleaning and vectorisation function. These are code skeletons containing function definitions that will be completed later, but which already show a clear intention of the data processing steps. Organising the results.ipynb notebook, integrating the calls to these functions while clearly detailing our intentions, in order to document the data processing process and ensure a fluid understanding of the data pipeline.
+- 07/11 - 14/11:
 
--[Complete...]
+(Lucile) Preprocessed the movie dataset and conducted a case study on war movies.
+(Diane) Focused on the exploratory data analysis (EDA) of the movie dataset.
+(Laurine) Preprocessed the historical dataset, prepared it for integration and started a case study on historical events in India.
+(Nouchine) Helped structure the project, documented progress for each step, and contributed to the preliminary analysis of the datasets.
 
-- 14/11:
-Revision of the notebook and consolidation of the results (all members): Checking the consistency of the analyses, adding text descriptions to explain each section of the notebook. Final check of the visualisations and adjustment of the analyses according to the team's comments.
+- 14/11: (All members) Reviewed the notebook and consolidated results. Ensured consistency in analyses, added descriptive text for each section of the notebook, and finalized visualizations based on team feedback.Reviewed the notebook and consolidated results. Ensured consistency in analyses, added descriptive text for each section of the notebook, and finalized visualizations based on team feedback.
 
-- 15/11: Finalisation of the project. Final check of the GitHub repository (README, file and code structure). Submission of the project before midnight.
+-15/11: (Sarah) Conducted a full review of the project, made minor adjustments and corrections, and revised the README for submission. 
 
 ## Questions for TAs (optional): 
 
