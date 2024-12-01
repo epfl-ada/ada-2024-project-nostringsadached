@@ -60,3 +60,5 @@ def most_common_genres(movies, genre_counts, top_n):
     coverage = (covered / total) * 100
     
     return movies_common_genre, coverage
+
+
