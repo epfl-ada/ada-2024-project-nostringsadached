@@ -13,7 +13,6 @@ Lastly, we’ll analyze how box office successes shape genre proliferation, inve
 * How do major historical events influence trends in cinema genres?
 Which genres gain or lose popularity during historical periods such as wars or economic crises?
 * To what extent do American culture and globalization shape genre preferences worldwide?
-* How do box office successes affect the proliferation of specific genres, and over what time span?
 
 ## Proposed additional dataset:
 
