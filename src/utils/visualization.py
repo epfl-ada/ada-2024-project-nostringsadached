@@ -21,6 +21,15 @@ def plot_boxplot(data, title, xlabel, figsize=(8, 1), color='lightblue', orient=
     plt.xticks(rotation=45)
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.show()
+
+def plot_bar(x,y, xlabel, ylabel, title, color='red'):
+    plt.figure(figsize=(8, 4))
+    plt.bar(x, y, color=color, alpha=0.6)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.title(title)
+    plt.legend(loc='upper right')
+    plt.show()
    
 def plot_events_map(dataset):
     shapefile_path = 'data/geopandas/ne_110m_admin_0_countries.shp'

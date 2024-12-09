@@ -1,6 +1,6 @@
 from src.utils.appendix import *
 
-def preprocessed_movies(raw_movies_data):
+def preprocess_movies(raw_movies_data):
     raw_movies_data.columns = ["Wikipedia movie ID", "Freebase movie ID", "Movie name", "Movie release date", "Movie box office revenue",
     "Movie runtime", "Movie languages (Freebase ID:name tuples)", "Movie countries (Freebase ID:name tuples)", "Movie genres (Freebase ID:name tuples)"]
     
