@@ -75,3 +75,23 @@ def plot_movies_map(dataset, movies_per_country):
 
     plt.title("Number of Movies per Country")
     plt.show()
+
+def analyze_war_movies(region_name, countries, war_comedy_df, war_drama_df, total_movies_per_year):
+    region_pattern = '|'.join(countries)
+    
+    comedy_filtered = war_comedy_df[war_comedy_df['Countries'].str.contains(region_pattern, case=False, na=False)]
+    drama_filtered = war_drama_df[war_drama_df['Countries'].str.contains(region_pattern, case=False, na=False)]
+    
+    comedy_per_year = comedy_filtered.groupby('Year').size()
+    drama_per_year = drama_filtered.groupby('Year').size()
+    comedy_proportion = (comedy_per_year / total_movies_per_year) * 100
+    drama_proportion = (drama_per_year / total_movies_per_year) * 100
+    
+    plt.figure(figsize=(8, 4))
+    plt.bar(comedy_proportion.index, comedy_proportion.values, label=f'{region_name} War Comedy Movies Proportion', color='red', alpha=0.6)
+    plt.bar(drama_proportion.index, drama_proportion.values, label=f'{region_name} War Drama Movies Proportion', color='limegreen', alpha=0.6)
+    plt.xlabel('Year')
+    plt.ylabel('Proportion of Movies')
+    plt.title(f'War Comedy Movies and War Drama Movies in {region_name} Over Time')
+    plt.legend(loc='upper right')
+    plt.show()
