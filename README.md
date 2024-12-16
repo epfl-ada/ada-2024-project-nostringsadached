@@ -100,5 +100,5 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 (Diane) Investigated the manual identification of event-genre pairs to refine the analysis.
 
-(Sarah) Created a more relevant historical dataset manually with the help of a language model to overcome limitations of the original dataset and began conducting analyses and visualizations to establish a coherent narrative. Updated the readme file.
+(Sarah) Created a more relevant historical dataset manually with the help of a language model to overcome limitations of the original dataset and began conducting analyses and general visualizations to represent both datasets together. Reorganized the notebook by structuring methods into the appendix and improving transitions between sections for better flow. Updated the README file.
 
