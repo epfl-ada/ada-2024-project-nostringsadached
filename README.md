@@ -4,31 +4,27 @@
 
 This project explores the historical evolution of film genres, analyzing how societal and historical contexts have influenced trends in cinema.
 
-By analyzing the impact of major world events, we seek to understand how periods of conflict, economic upheaval, or stability shape audience preferences and genre popularity. For instance, we will investigate whether genres like war films or escapist comedies surge during turbulent times. Additionally, we will assess the influence of American culture and globalization on international cinema, examining how trends in U.S. films impact global production. 
-
-Lastly, we’ll analyze how box office successes shape genre proliferation, investigating if highly successful films lead to a rise in similar productions. This research aims to uncover the interplay between cinema, historical context, and cultural diffusion, telling a broader story of how global and national phenomena shape what audiences see on screen.
+By analyzing the impact of major world events, we seek to understand how periods of conflict, economic upheaval, or stability shape audience preferences and genre popularity. For instance, we will investigate whether genres like war films or escapist comedies surge during turbulent times. 
 
 ## Research Questions:
 
 * How do major historical events influence trends in cinema genres?
-Which genres gain or lose popularity during historical periods such as wars or economic crises?
-* To what extent do American culture and globalization shape genre preferences worldwide?
+* Which genres gain or lose popularity during historical periods such as wars or economic crises?
 
 ## Proposed additional dataset:
 
-We have integrated a dataset on major historical events, the <u>*World Important Events: Ancient to Modern*</u> dataset . Key features include:
+Initially, we integrated the <u>*World Important Events: Ancient to Modern*</u> dataset to explore correlations between historical events and film genre trends. While it provided comprehensive coverage of events, its scope and complexity posed challenges for analysis and interpretation in our specific context.
 
-Type of Event: Categorization of events (e.g., wars, revolutions, economic crises).
+To address this, we created a new dataset manually, with the assistance of a language model (LM). This tailored dataset focuses on a curated selection of historical events that are more directly relevant to our study. Key features include:
 
-Impact and Outcome: Information on the severity and consequences of events.
+Event Name: The name of the historical event.
+Year: The year of the event.
+Location: The primary geographical region affected.
+Impact Type: Categorized as "Positive," "Negative," or "Mixed."
+Description: A brief explanation of the event's relevance to cultural or cinematic trends.
+This approach allowed us to streamline the analysis, focusing on fewer, highly relevant events while maintaining sufficient detail for meaningful insights. 
 
-And other information such as the Name of Incident, the date, the concernetcountry, the Affected Population and the Important Person/Group Responsible.
-This dataset covers a variety of periods, from ancient civilisations to the modern era, and includes major events such as wars, economic crises, political revolutions and technological advances.
-Integrating this historical information will allow us to cross-reference film release dates with historical periods to investigate correlations between world events and genre trends. For instance, we can analyze whether war films increase during conflicts or comedies dominate during economic instability or if an event with a positive outcome in the country changes the preferences in genre movies of citizens.
-
-The dataset's columns, such as ‘Type of Event’, ‘Impact’ and ‘Outcome’, will allow us to group and classify events into categories (e.g. wars, social advances) and analyse their potential influence on the types of films produced at different times.
-
-This additional dataset will provide a solid basis for enriching our analysis, helping us to understand how historical events shape audience preferences and influence film production.
+This new dataset has become a cornerstone of our project, enabling us to overcome previous limitations and better align our analysis with the project's objectives.
 
 ## Methods
 
@@ -49,13 +45,7 @@ Track the evolution of genres over time, identifying key periods of popularity o
 5) Correlation Analysis:
 Investigate relationships between genre trends, major historical events, and box office performance using statistical methods.
 
-6) Impact of Box Office Success:
-Identify successful films by genre and assess how they influence the proliferation of similar genres over subsequent years.
-
-7) NLP for Historical Context:
-Utilize natural language processing (NLP) techniques to detect historical themes and events in film summaries, establishing correlations with genre trends.
-
-8) Visualization and Insights:
+6) Visualization and Insights:
 Create visualizations such as timelines, stacked area charts, and heatmaps to summarize findings and present them intuitively.
 
 ## Proposed timeline
@@ -66,7 +56,15 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 ⟶ Until 15/11 : Data Handling and Preprocessing & Initial Exploratory Data Analysis (EDA)
 
-⟶ 15/11: Finalize visualizations, results, and repository structure. Submit the project.
+⟶ 15/11: Finalize visualizations, results, and repository structure. Submit the project milestone P2.
+
+⟶ 26/11: Discuss feedback and reorganize code structure. 
+
+⟶ 09/12: Restructured our repository (compressed formats, isolated the preprocessing, made everything clearer).
+
+⟶ Until 12/12: New hypothese testing, statistical tests implemented. 
+
+⟶ 16/12: Have a clear, coherent idea of the story we want to convey.
 
 ## Organization within the team:
 
@@ -90,7 +88,17 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 ▪️ 15/11: (Sarah and Diane) Conducted a full review of the project, made minor adjustments and corrections, and revised the README for submission. 
 
-## Questions for TAs (optional): 
+▪️ 01/12 - 09/12: 
 
-- Do you have any recommendations on how to group event types and movie genres together effectively?
-- Is using NLP techniques to detect historical themes and events in movie summaries a good approach? If not, should we focus solely on the movie release dates and the event dates?
+(Laurine) Focused on cleaning and optimizing the preprocessing pipeline, compressing datasets, creating helper functions (e.g., for boxplots and geopandas), and exploring trends and correlations in event data
+
+(Lucile) Reorganized the documentation for better clarity  and performed statistical analyses (ANOVA test and linear regression) on war movies, suggesting these methods could inspire future analyses.
+
+▪️ 16/12: 
+
+(Lucile) Lucile continued the statistical analyses, building on Laurine's case study, by applying methods like ANOVA tests and linear regression to deepen the insights.
+
+(Diane) Investigated the manual identification of event-genre pairs to refine the analysis.
+
+(Sarah) Created a more relevant historical dataset manually with the help of a language model to overcome limitations of the original dataset and began conducting analyses and visualizations to establish a coherent narrative. Updated the readme file.
+
