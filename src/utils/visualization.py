@@ -95,3 +95,86 @@ def analyze_war_movies(region_name, countries, war_comedy_df, war_drama_df, tota
     plt.title(f'War Comedy Movies and War Drama Movies in {region_name} Over Time')
     plt.legend(loc='upper right')
     plt.show()
+    
+def plot_genre_proportion_and_event(df, total_movies, genre_pattern, genre_name, event_name, event_dates, country=None, start=None, is_period=None):
+    """
+    Plots the proportion of films of a specific genre over time, with the option to highlight a significant event.
+
+    Parameters:
+        genre_pattern (str): A regex pattern to match the genre of films.
+        genre_name (str): The name of the genre for the plot title.
+        event_name (str): The name of the event to highlight on the plot.
+        event_dates (tuple): A tuple containing the start and end year of the event (e.g., (start_year, end_year)).
+        country (str, optional): Country name to filter the films. If None, includes all countries.
+        start (int, optional): The year to start the plot from. If None, starts from the earliest year.
+        is_period (bool): If True, highlights the event as a period; if False, highlights it as a single point.
+    """
+    genre_films = df[df['Genres'].str.contains(genre_pattern, case=False, na=False)]
+    
+    if country:
+        genre_films = genre_films[genre_films['Countries'].str.contains(country, case=False, na=False)]
+    
+    genre_films_per_year = genre_films.groupby('Year').size()
+    genre_films_proportion = (genre_films_per_year / total_movies).fillna(0) * 100
+
+    # Filter the data to start from the specified year
+    if start:
+        genre_films_proportion = genre_films_proportion[genre_films_proportion.index >= start]
+
+    plt.figure(figsize=(8, 4))
+    title = f'Proportion of {genre_name} Films Over Time'
+    if country:
+        title += f' in {country}'
+    plt.plot(genre_films_proportion.index, genre_films_proportion.values, color='navy')
+    plt.xlabel('Year')
+    plt.ylabel(f'Proportion of {genre_name} Movies (%)')
+    plt.title(title)
+
+    if is_period:
+        plt.axvspan(event_dates[0], event_dates[1], color='lightblue', alpha=0.3, label=event_name)
+    else:
+        plt.axvline(x=event_dates[0], color='red', linestyle='--', label=event_name)
+
+    plt.legend()
+    plt.show()
+    
+    
+
+def plot_genre_number_and_event(df, genre_pattern, genre_name, event_name, event_dates, country=None, start=None, is_period=None):
+    """
+    Plots the number of films of a specific genre over time, with the option to highlight a significant event.
+
+    Parameters:
+        genre_pattern (str): A regex pattern to match the genre of films.
+        genre_name (str): The name of the genre for the plot title.
+        event_name (str): The name of the event to highlight on the plot.
+        event_dates (tuple): A tuple containing the start and end year of the event (e.g., (start_year, end_year)).
+        country (str, optional): Country name to filter the films. If None, includes all countries.
+        is_period (bool): If True, highlights the event as a period; if False, highlights it as a single point.
+    """
+    genre_films = df[df['Genres'].str.contains(genre_pattern, case=False, na=False)]
+    
+    if country:
+        genre_films = genre_films[genre_films['Countries'].str.contains(country, case=False, na=False)]
+    
+    genre_films_per_year = genre_films.groupby('Year').size().fillna(0)
+    # Filter the data to start from the specified year
+    if start:
+        genre_films_proportion = genre_films_proportion[genre_films_proportion.index >= start]
+        
+    plt.figure(figsize=(8, 4))
+    title = f'Number of {genre_name} Films Over Time'
+    if country:
+        title += f' in {country}'
+    plt.plot(genre_films_per_year.index, genre_films_per_year.values, color='navy')
+    plt.xlabel('Year')
+    plt.ylabel(f'Number of {genre_name} Movies (%)')
+    plt.title(title)
+
+    if is_period:
+        plt.axvspan(event_dates[0], event_dates[1], color='lightblue', alpha=0.3, label=event_name)
+    else:
+        plt.axvline(x=event_dates[0], color='red', linestyle='--', label=event_name)
+
+    plt.legend()
+    plt.show()
