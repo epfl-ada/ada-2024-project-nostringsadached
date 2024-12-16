@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import geopandas as gpd
+from src.utils.appendix import *
+import matplotlib.patches as mpatches
 
 def plot_boxplot(data, title, xlabel, figsize=(8, 1), color='lightblue', orient='h'):
     """
@@ -94,4 +96,53 @@ def analyze_war_movies(region_name, countries, war_comedy_df, war_drama_df, tota
     plt.ylabel('Proportion of Movies')
     plt.title(f'War Comedy Movies and War Drama Movies in {region_name} Over Time')
     plt.legend(loc='upper right')
+    plt.show()
+    
+def plot_movie_genres_per_decade(related_genres,total_movies_per_decade,preprocessed_movies):
+    plt.figure(figsize=(12, 4))
+    for genre, related in related_genres.items():
+        related_data = filter_genre_country(preprocessed_movies, '|'.join(related))
+        related_data_per_decade = group_by_decade(related_data)
+        # Align the indices of related_data_per_decade and total_movies_per_decade
+        aligned_data = related_data_per_decade.reindex(total_movies_per_decade.index, fill_value=0)
+        proportion_per_decade = (aligned_data / total_movies_per_decade) * 100
+        plt.plot(aligned_data.index, proportion_per_decade.values, label=genre)
+
+    plt.xlabel('Decade')
+    plt.ylabel('Proportion of Movies (%)')
+    plt.title('Proportion of Movies by Genre Over Decades')
+    plt.legend()
+    plt.show()
+    
+def plot_genre_trends_per_country(country,historical_data,movie_metadata):
+    plt.figure(figsize=(14, 8))
+    country_data = movie_metadata[(movie_metadata['Countries'] == country)]
+    country_genres = country_data.explode('Genres').groupby(['Year', 'Genres']).size().reset_index(name='Count')
+
+    # Filter top 5 genres by total count for this country
+    top_genres = country_genres.groupby('Genres')['Count'].sum().nlargest(5).index
+    filtered_data = country_genres[country_genres['Genres'].isin(top_genres)]
+
+    genre_handles = []
+    for genre in top_genres:
+        genre_data = filtered_data[filtered_data['Genres'] == genre]
+        line, = plt.plot(genre_data['Year'], genre_data['Count'], label=genre)
+        genre_handles.append(line)
+
+    country_events = get_country_events(historical_data, country)
+    event_colors = plt.cm.tab20.colors 
+    event_handles = []
+
+    for idx, (_, event) in enumerate(country_events.iterrows()):
+        color = event_colors[idx % len(event_colors)]
+        plt.plot([event['Year'], event['Year']], [0, plt.gca().get_ylim()[1] * 0.75], color=color, linestyle='--', linewidth=1.5, alpha=0.7)
+        plt.scatter(event['Year'], plt.gca().get_ylim()[1] * 0.75, color=color, marker='*', s=100, zorder=5)
+        event_handles.append(mpatches.Patch(color=color, label=event['Event Name']))
+        
+    plt.title(f"Top Genre Trends Over Time in {country}", fontsize=16)
+    plt.xlabel("Year", fontsize=14)
+    plt.ylabel("Number of Movies", fontsize=14)
+    plt.legend(handles=genre_handles + event_handles, title="Legend", fontsize=8, loc='upper right', bbox_to_anchor=(1.2, 1))
+    plt.grid(alpha=0.3)
+    plt.tight_layout()
     plt.show()

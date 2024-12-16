@@ -62,3 +62,18 @@ def most_common_genres(movies, genre_counts, top_n):
     return movies_common_genre, coverage
 
 
+# Function to filter movies by genre and country
+def filter_genre_country(df, genre_pattern, country="United States of America"):
+    return df[df['Countries'].str.contains(country) & df['Genres'].str.contains(genre_pattern, case=False, na=False)]
+
+# Function to group data by decade
+def group_by_decade(df):
+    df = df.copy()
+    df['Decade'] = (df['Year'] // 10) * 10
+    return df.groupby('Decade').size()
+
+def get_country_events(historical_data, country):
+    return historical_data[(historical_data['Location'] == country) | (historical_data['Location'] == "Global")]
+
+
+
