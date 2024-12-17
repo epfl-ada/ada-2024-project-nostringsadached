@@ -1,8 +1,12 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import geopandas as gpd
+<<<<<<< Updated upstream
 from src.utils.appendix import *
 import matplotlib.patches as mpatches
+=======
+import pandas as pd
+>>>>>>> Stashed changes
 
 def plot_boxplot(data, title, xlabel, figsize=(8, 1), color='lightblue', orient='h'):
     """
@@ -32,6 +36,7 @@ def plot_bar(x, y, xlabel, ylabel, title, color='red'):
     plt.title(title)
     plt.show()
    
+
 def plot_events_map(dataset):
     shapefile_path = 'data/geopandas/ne_110m_admin_0_countries.shp'
     world = gpd.read_file(shapefile_path)
@@ -89,13 +94,14 @@ def analyze_war_movies(region_name, countries, war_comedy_df, war_drama_df, tota
     drama_proportion = (drama_per_year / total_movies_per_year) * 100
     
     plt.figure(figsize=(8, 4))
-    plt.bar(comedy_proportion.index, comedy_proportion.values, label=f'{region_name} War Comedy Movies Proportion', color='red', alpha=0.6)
-    plt.bar(drama_proportion.index, drama_proportion.values, label=f'{region_name} War Drama Movies Proportion', color='limegreen', alpha=0.6)
+    plt.bar(comedy_proportion.index, comedy_proportion.values, label=f'{region_name} War Comedy Movies Proportion %', color='red', alpha=0.6)
+    plt.bar(drama_proportion.index, drama_proportion.values, label=f'{region_name} War Drama Movies Proportion %', color='limegreen', alpha=0.6)
     plt.xlabel('Year')
-    plt.ylabel('Proportion of Movies')
+    plt.ylabel('Proportion of Movies %')
     plt.title(f'War Comedy Movies and War Drama Movies in {region_name} Over Time')
     plt.legend(loc='upper right')
     plt.show()
+<<<<<<< Updated upstream
     
 def plot_movie_genres_per_decade(related_genres,total_movies_per_decade,preprocessed_movies):
     plt.figure(figsize=(12, 4))
@@ -266,4 +272,31 @@ def plot_global_plot(historical,movies):
     plt.legend(title="Genres", bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.tight_layout()
     plt.show()
+=======
+
+
+def plot_actual_vs_predicted(years, actual, predicted, model, title="Trend of War Movies"):
+    """
+    Plots the actual vs predicted proportions of war movies over time and prints model coefficients.
+
+    Parameters:
+        years (array-like): The years for the x-axis.
+        actual (array-like): Actual proportion values.
+        predicted (array-like): Predicted proportion values.
+        model (fitted model object): A regression model object with intercept_ and coef_ attributes.
+        title (str): The title of the plot.
+    """
+    # Plot actual vs predicted
+    plt.figure(figsize=(8, 4))
+    plt.plot(years, actual, label='Actual Proportion', color='blue')
+    plt.plot(years, predicted, label='Predicted Proportion', color='red', linestyle='--')
+    
+    # Add labels, title, and legend
+    plt.xlabel('Year')
+    plt.ylabel('Proportion of War Movies (%)')
+    plt.title(title)
+    plt.legend()
+    plt.show()
+
+>>>>>>> Stashed changes
 

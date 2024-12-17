@@ -1,6 +1,8 @@
 import pandas as pd
 import ast
 import numpy as np
+import statsmodels.api as sm
+from sklearn.linear_model import LinearRegression
 
 def extract_names(cell):
     #Transform the string of dictionaries into a list of real dictionaries with the id referring to the key and the name referring to the value
@@ -60,6 +62,29 @@ def most_common_genres(movies, genre_counts, top_n):
     coverage = (covered / total) * 100
     
     return movies_common_genre, coverage
+
+def fit_and_evaluate_model(X, y):
+    """
+    Fits a linear regression model, predicts values, handles NaN values, 
+    and prints a statistical summary using statsmodels.
+    """
+    # Remove NaN values
+    mask = ~np.isnan(y)
+    X = X[mask]
+    y = y[mask]
+    
+    # Fit the linear regression model
+    model = LinearRegression()
+    model.fit(X, y)
+    
+    # Predict the values
+    predicted = model.predict(X)
+    
+    X_sm = sm.add_constant(X)  # Add intercept
+    model_sm = sm.OLS(y, X_sm).fit()
+    print(model_sm.summary())
+    
+    return model, predicted, model_sm.summary()
 
 
 # Function to filter movies by genre and country
