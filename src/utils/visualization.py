@@ -1,12 +1,9 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import geopandas as gpd
-<<<<<<< Updated upstream
 from src.utils.appendix import *
 import matplotlib.patches as mpatches
-=======
 import pandas as pd
->>>>>>> Stashed changes
 
 def plot_boxplot(data, title, xlabel, figsize=(8, 1), color='lightblue', orient='h'):
     """
@@ -272,8 +269,6 @@ def plot_global_plot(historical,movies):
     plt.legend(title="Genres", bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.tight_layout()
     plt.show()
-=======
-
 
 def plot_actual_vs_predicted(years, actual, predicted, model, title="Trend of War Movies"):
     """
@@ -298,5 +293,4 @@ def plot_actual_vs_predicted(years, actual, predicted, model, title="Trend of Wa
     plt.legend()
     plt.show()
 
->>>>>>> Stashed changes
 
