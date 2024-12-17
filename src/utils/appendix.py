@@ -75,5 +75,26 @@ def group_by_decade(df):
 def get_country_events(historical_data, country):
     return historical_data[(historical_data['Location'] == country) | (historical_data['Location'] == "Global")]
 
+# Function to filter movie genres based on a predefined list
+def genre_filter(genre_string, genres_list):
+    if pd.isna(genre_string):
+        return []
+    return [g for g in genres_list if g in genre_string]
 
+# Function to determine if a movie year is before or after an event
+def get_event_period(year, event_row):
+    if year < event_row['Year']:
+        return 'Before'
+    elif year >= event_row['Year']:
+        return 'After'
+    return 'No Event'
+
+# Function to process movies for a specific event
+def process_event(event_row,movies):
+    temp_df = movies.copy()
+    temp_df['Period'] = temp_df['Year'].apply(lambda y: get_event_period(y, event_row))
+    temp_df = temp_df[temp_df['Period'].isin(['Before', 'After'])]
+    result = temp_df.groupby(['Period', 'Filtered_Genres']).size().reset_index(name='Count')
+    result['Proportion'] = result.groupby('Period')['Count'].transform(lambda x: x / x.sum())
+    return result
 

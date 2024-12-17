@@ -231,5 +231,40 @@ def plot_genre_number_and_event(df, genre_pattern, genre_name, event_name, event
     plt.legend()
     plt.show()
 
+def plot_global_plot(historical,movies):
+    sns.set_palette("pastel")
 
+    combined_data = []
+    for _, event in historical.iterrows():
+        event_data = process_event(event, movies)
+        event_data['Event'] = event['Event Name']
+        combined_data.append(event_data)
+
+    # Concaténer toutes les données pour un seul plot
+    final_data = pd.concat(combined_data)
+    final_data['Separation'] = final_data['Event'] + '_' + final_data['Period']
+
+    # Ajouter des séparations
+    event_order = []
+    for event in historical['Event Name']:
+        event_order.append(f"{event}_Before")
+        event_order.append(f"{event}_After")
+        event_order.append("Separation")
+
+    final_data = final_data.sort_values(by=['Event', 'Period'], key=lambda x: x.map({'Before': 0, 'After': 1}))
+    pivot_data = final_data.pivot_table(index=['Separation'], columns='Filtered_Genres', values='Proportion', fill_value=0)
+
+    # Ajouter des lignes vides pour les séparations
+    for sep in [i for i in pivot_data.index if "Separation" in i]:
+        pivot_data.loc[sep] = 0
+
+    pivot_data = pivot_data.reindex(event_order)
+
+    pivot_data.plot(kind='bar', stacked=True, figsize=(18, 8))
+    plt.title("Proportion of Movie Genres Before and After Events")
+    plt.xlabel("Events and Periods")
+    plt.ylabel("Proportion")
+    plt.legend(title="Genres", bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.tight_layout()
+    plt.show()
 
