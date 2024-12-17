@@ -82,8 +82,7 @@ def fit_and_evaluate_model(X, y):
     
     X_sm = sm.add_constant(X)  # Add intercept
     model_sm = sm.OLS(y, X_sm).fit()
-    print(model_sm.summary())
-    
+       
     return model, predicted, model_sm.summary()
 
 
