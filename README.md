@@ -102,3 +102,4 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 (Sarah) Created a more relevant historical dataset manually with the help of a language model to overcome limitations of the original dataset and began conducting analyses and general visualizations to represent both datasets together. Reorganized the notebook by structuring methods into the appendix and improving transitions between sections for better flow. Updated the README file.
 
+(Nouchine) Began working on the website and the Data Story layout, structure and text redaction.
