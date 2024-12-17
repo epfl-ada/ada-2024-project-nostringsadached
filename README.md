@@ -66,6 +66,10 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 ⟶ 16/12: Have a clear, coherent idea of the story we want to convey.
 
+⟶ Until 20/12 : Writing this story in details in the notebook and making it interactive on the website
+
+⟶ 20/12: Finalize visualizations, results,writing and repository structure. Submit the project milestone P3.
+
 ## Organization within the team:
 
 ▪️ 01/11: (All members) Initial meeting to present and discuss ideas. Selection of a common project topic, followed by refinement based on team interests and project goals.
@@ -103,3 +107,8 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 (Sarah) Created a more relevant historical dataset manually with the help of a language model to overcome limitations of the original dataset and began conducting analyses and general visualizations to represent both datasets together. Reorganized the notebook by structuring methods into the appendix and improving transitions between sections for better flow. Updated the README file.
 
 (Nouchine) Began working on the website and the Data Story layout, structure and text redaction.
+
+▪️ 17/12: 
+(Sarah) Worked on creating an initial global plot to provide a general overview and set the stage for transitioning into more specific analyses. Reformated the project structure, integrated the exploratory data analysis (EDA) in the appropriate sections, and align the work.
+
+(Lucile) 
