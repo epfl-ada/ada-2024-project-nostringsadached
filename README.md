@@ -98,7 +98,7 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 (Lucile) Lucile continued the statistical analyses, building on Laurine's case study, by applying methods like ANOVA tests and linear regression to deepen the insights.
 
-(Diane) Investigated the manual identification of event-genre pairs to refine the analysis.
+(Diane) Identified 10 pairs of genres and events to refine the analysis. Investigated their relationship and created functions for the visualization.
 
 (Sarah) Created a more relevant historical dataset manually with the help of a language model to overcome limitations of the original dataset and began conducting analyses and general visualizations to represent both datasets together. Reorganized the notebook by structuring methods into the appendix and improving transitions between sections for better flow. Updated the README file.
 
