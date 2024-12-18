@@ -98,6 +98,10 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 (Lucile) Reorganized the documentation for better clarity  and performed statistical analyses (ANOVA test and linear regression) on war movies, suggesting these methods could inspire future analyses.
 
+▪️ 12/12: 
+
+(Laurine) Started case study on LGBT events and movies, investigated further WWII, adding for example propaganda genre study. Studied also the rise of musical genre as an escape during the Great Depression.
+
 ▪️ 16/12: 
 
 (Lucile) Lucile continued the statistical analyses, building on Laurine's case study, by applying methods like ANOVA tests and linear regression to deepen the insights.
