@@ -10,6 +10,7 @@ By analyzing the impact of major world events, we seek to understand how periods
 
 * How do major historical events influence trends in cinema genres?
 * Which genres gain or lose popularity during historical periods such as wars or economic crises?
+* Is it possible to build a classifier to predict whether an event will have an Immediate Spike or a Long-Term Influence on genre trends?
 
 ## Proposed additional dataset:
 
@@ -98,9 +99,7 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 (Lucile) Reorganized the documentation for better clarity  and performed statistical analyses (ANOVA test and linear regression) on war movies, suggesting these methods could inspire future analyses.
 
-▪️ 12/12: 
-
-(Laurine) Started case study on LGBT events and movies, investigated further WWII, adding for example propaganda genre study. Studied also the rise of musical genre as an escape during the Great Depression.
+▪️ 12/12: (Laurine) Started case study on LGBT events and movies, investigated further WWII, adding for example propaganda genre study. Studied the rise of musical genre as an escape during the Great Depression.
 
 ▪️ 16/12: 
 
@@ -113,6 +112,35 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 (Nouchine) Began working on the website and the Data Story layout, structure and text redaction.
 
 ▪️ 17/12: 
+
 (Sarah) Worked on creating an initial global plot to provide a general overview and set the stage for transitioning into more specific analyses. Reformated the project structure, integrated the exploratory data analysis (EDA) in the appropriate sections, and align the work.
 
-(Lucile) 
+(Lucile) Continued the statistical analysis of wars and LGBT data and tried to construct the narrative as talked together.
+
+(Diane) Kept investigating new pairs of genres and events, reflected on how to connect them and brainstormed ideas.
+
+(Nouchine) Finished the website's framework.
+
+▪️ 18/12: 
+
+(Diane) Worked on deepening the analysis with statistical methods and finding more event-genre pairs.
+
+(Nouchine) Wrote the entire data story. Continued working on the website.
+
+(Sarah) Implemented a zooming on certain plot to highlight the most relevant things. Worked on new plots for the website.
+Restructured the project: added links, separated useful content from less relevant or uncertain parts. Brainstormed next step.
+Updated the README file.
+
+▪️ 19/12: 
+
+(Diane)...
+
+(Lucile)...
+
+(Laurine)...
+
+(Nouchine)...
+
+(Sarah) Worked on building a classifier to predict whether an event will have an Immediate Spike or a Long-Term Influence on movie genre trends.
+
+▪️ 20/12: (All members) Reviewed the work and made final adjustments for submission.
