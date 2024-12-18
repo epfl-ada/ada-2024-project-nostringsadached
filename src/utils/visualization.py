@@ -330,25 +330,24 @@ def plot_first_look_historical(historical_events_df):
     colors_location = ['#FFB5E8', '#85E3FF', '#B9FBC0', '#FFABAB', '#FFC3A0']
     colors_impact = ['#FFB5E8', '#B28DFF', '#FFABAB']
 
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
 
-    # by Location
+    # By Location
     location_counts = historical_events_df['Location'].value_counts()
     axes[0].bar(location_counts.index, location_counts.values, color=colors_location[:len(location_counts)])
     axes[0].set_title("Distribution of events by Location")
     axes[0].tick_params(axis='x', rotation=45)
-    #by Impact Type
+
+    # By Impact Type
     impact_counts = historical_events_df['Impact Type'].value_counts()
     axes[1].bar(impact_counts.index, impact_counts.values, color=colors_impact[:len(impact_counts)])
     axes[1].set_title("Events by Impact Type")
 
-    plt.tight_layout()
-    plt.show()
+    # By Year
+    sns.histplot(data=historical_events_df, x='Year', bins=20, kde=True, color="lightblue", ax=axes[2])
+    axes[2].set_title("Distribution of historical events by Year")
+    axes[2].set_xlabel("Year")
+    axes[2].set_ylabel("Number of events")
 
-    # By year
-    plt.figure(figsize=(10, 6))
-    sns.histplot(data=historical_events_df, x='Year', bins=20, kde=True, color="lightblue")
-    plt.title("Distribution of historical events by year")
-    plt.xlabel("Year")
-    plt.ylabel("Number of events")
+    plt.tight_layout()
     plt.show()

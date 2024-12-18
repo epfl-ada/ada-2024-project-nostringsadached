@@ -1,38 +1,37 @@
 Event Name,Year,Location,Impact Type,Description
-World War II,1939,Global,Negative,Major conflict influencing war movies and historical dramas.
-Great Depression,1929,USA,Negative,Economic collapse led to the rise of escapist genres like musicals and screwball comedies.
-Civil Rights Movement,1954,USA,Mixed,Influenced films addressing racial issues and social justice.
-Cold War,1947,Global,Mixed,Tension between superpowers popularized spy and political thriller genres.
-Vietnam War,1955,USA,Negative,Affected war films and anti-war dramas in the 1970s.
-Space Race,1957,Global,Positive,Sparked interest in science fiction films.
-9/11 Attacks,2001,USA,Negative,Led to a surge in patriotic and terrorism-related movies.
-Post-War Prosperity,1950,USA,Positive,Rise in family-friendly and optimistic genres.
-Women's Liberation Movement,1960,Global,Mixed,Influenced films featuring strong female protagonists and feminist themes.
-Dot-com Bubble,1995,Global,Negative,Reflected in films about technology and cyber dystopias.
-Fall of Berlin Wall,1989,Global,Positive,End of Cold War reflected in political and historical dramas.
-Hollywood Blacklist,1947,USA,Negative,McCarthyism's influence on film production and content.
-Environmental Movement,1970,Global,Mixed,Growth in environmental documentaries and eco-dystopian films.
-Prohibition Era,1920,USA,Negative,Gangster and crime films gained popularity during this time.
-Moon Landing,1969,Global,Positive,Increased interest in science fiction and space exploration movies.
-Roaring Twenties,1920,USA,Positive, Led to films about extravagance and jazz and social liberation.
-Cuban Missile Crisis,1962,USA,Negative,Heightened Cold War tensions which reflected in thrillers and spy films.
-French New Wave,1958,France,Positive,Revolutionized cinematic storytelling and inspired global filmmakers.
-Internet Age,1990,Global,Positive,Films began exploring digital culture and cyber themes.
-Rise of Feminism (Second Wave),1960,Global,Mixed,Promoted films featuring gender equality and feminist themes.
-Gay Rights Movement,1969,Global,Mixed,Brought LGBTQ+ narratives to the forefront in films.
-Fall of the Soviet Union,1991,Global,Positive,Marked the end of Cold War influences in films.
-Golden Age of Hollywood,1930,USA,Positive,Marked a period of cinematic innovation and iconic film production.
-Oil Crisis,1973,Global,Negative,Reflected in films about economic hardship and survival.
-Japanese Economic Miracle,1950,Japan,Positive,Rise in samurai films and technological themes.
-Civil Rights Act,1964,USA,Positive,Encouraged inclusive narratives in American cinema.
-Globalization,1980,Global,Mixed,Led to cross-cultural films and international themes.
-1980s Reaganomics,1981,USA,Mixed,Rise in action blockbusters and corporate thrillers.
-Environmental Protests,1990,Global,Mixed,Films explored ecological and environmental themes.
-Arab-Israeli War,1948,Global,Negative,Inspired films about war and diplomacy.
-Hollywood Studio System Decline,1948,USA,Mixed,The Paramount Decree ended studio monopolies changing film production.
-British New Wave,1959,United Kingdom,Positive,Focus on working-class life and social realism in British films.
-French New Wave,1958,France,Positive,Revolutionized cinematic storytelling influencing global filmmakers.
-Indian Independence,1947,India,Positive,Post-independence cinema explored cultural identity and nationalism.
-Bollywood Golden Age,1950,India,Positive,Period marked by iconic films and the rise of Indian cinematic culture.
-Cultural Revolution,1966,China,Negative,Restricted artistic expression impacting film production.
-Economic Reform Era,1978,China,Positive,Led to the rise of the Chinese Fifth Generation filmmakers.
+World War II,1939,Global,Negative,A global conflict between Axis and Allied powers involving most nations.
+Great Depression,1929,USA,Negative,A worldwide economic downturn causing massive unemployment and poverty.
+Civil Rights Movement,1954,USA,Mixed,A struggle for African Americans' equality and end to racial discrimination.
+Cold War,1947,Global,Mixed,A period of political and military tension between the USA and USSR.
+Vietnam War,1955,USA,Negative,A conflict between communist North Vietnam and US-backed South Vietnam.
+Space Race,1957,Global,Positive,A competition between the USA and USSR for space exploration dominance.
+9/11 Attacks,2001,USA,Negative,Terrorist attacks on the World Trade Center and Pentagon by al-Qaeda.
+Post-War Prosperity,1950,USA,Positive,Economic growth and increased living standards after WWII.
+Women's Liberation Movement,1960,Global,Mixed,Campaigns for gender equality and women's rights.
+Dot-com Bubble,1995,Global,Negative,A period of rapid growth and collapse in internet company valuations.
+Fall of Berlin Wall,1989,Global,Positive,The end of the division between East and West Germany.
+Hollywood Blacklist,1947,USA,Negative,Ban on entertainment industry professionals accused of communism.
+Environmental Movement,1970,Global,Mixed,A global effort to protect the environment and fight pollution.
+Prohibition Era,1920,USA,Negative,GA nationwide ban on alcohol leading to speakeasies and organized crime.
+Moon Landing,1969,Global,Positive,The USA’s Apollo 11 mission put the first humans on the Moon.
+Roaring Twenties,1920,USA,Positive, A decade of economic prosperity jazz and cultural change.
+Cuban Missile Crisis,1962,USA,Negative, A 13-day confrontation between the USA and USSR over nuclear missiles in Cuba.
+French New Wave,1958,France,Positive,A revolutionary film movement emphasizing innovative storytelling.
+Internet Age,1990,Global,Positive,The rise of internet technology transforming communication and society.
+Rise of Feminism (Second Wave),1960,Global,Mixed,A movement addressing gender inequalities beyond voting rights.
+Gay Rights Movement,1969,Global,Mixed,Advocacy for LGBTQ+ rights and equality worldwide.
+Fall of the Soviet Union,1991,Global,Positive,The collapse of the USSR ending the Cold War.
+Golden Age of Hollywood,1930,USA,Positive,A period of classic films and studio dominance in cinema.
+Oil Crisis,1973,Global,Negative,A sharp rise in oil prices leading to economic disruption.
+Japanese Economic Miracle,1950,Japan,Positive,Rapid economic recovery and growth in post-WWII Japan.
+Civil Rights Act,1964,USA,Positive,Landmark legislation ending segregation and banning discrimination.
+Globalization,1980,Global,Mixed,Increased interconnectedness of economies cultures and trade worldwide.
+1980s Reaganomics,1981,USA,Mixed,US economic policies focused on tax cuts deregulation and free markets.
+Environmental Protests,1990,Global,Mixed,Demonstrations advocating for urgent environmental action.
+Arab-Israeli War,1948,Global,Negative,A conflict between Arab states and Israel following its creation.
+Hollywood Studio System Decline,1948,USA,Mixed,The collapse of the major studio dominance in Hollywood.
+British New Wave,1959,United Kingdom,Positive,A film movement focusing on working-class realism and social themes.
+Indian Independence,1947,India,Positive,India’s liberation from British colonial rule.
+Bollywood Golden Age,1950,India,Positive,A period of classic Indian cinema with iconic films and stars.
+Cultural Revolution,1966,China,Negative,Mao Zedong’s campaign to enforce communism and eliminate opposition.
+Economic Reform Era,1978,China,Positive,Reforms opening China’s economy to market policies and global trade.
