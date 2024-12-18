@@ -98,7 +98,6 @@ def analyze_war_movies(region_name, countries, war_comedy_df, war_drama_df, tota
     plt.title(f'War Comedy Movies and War Drama Movies in {region_name} Over Time')
     plt.legend(loc='upper right')
     plt.show()
-<<<<<<< Updated upstream
     
 def plot_movie_genres_per_decade(related_genres,total_movies_per_decade,preprocessed_movies):
     plt.figure(figsize=(12, 4))
@@ -191,7 +190,6 @@ def plot_genre_proportion_and_event(df, total_movies, genre_pattern, genre_name,
 
     plt.legend()
     plt.show()
-    
     
 
 def plot_genre_number_and_event(df, genre_pattern, genre_name, event_name, event_dates, country=None, start=None, is_period=None):
