@@ -249,7 +249,7 @@ def plot_global_plot(historical,movies):
     for event in historical['Event Name']:
         event_order.append(f"{event}_Before")
         event_order.append(f"{event}_After")
-        event_order.append("Separation")
+        event_order.append(" ")
 
     final_data = final_data.sort_values(by=['Event', 'Period'], key=lambda x: x.map({'Before': 0, 'After': 1}))
     pivot_data = final_data.pivot_table(index=['Separation'], columns='Filtered_Genres', values='Proportion', fill_value=0)
@@ -291,4 +291,36 @@ def plot_actual_vs_predicted(years, actual, predicted, model, title="Trend of Wa
     plt.legend()
     plt.show()
 
+def plot_selected_events(historical, movies, selected_events):
+    sns.set_palette("pastel")
 
+    combined_data = []
+    for _, event in historical.iterrows():
+        if event['Event Name'] in selected_events:
+            event_data = process_event(event, movies)
+            event_data['Event'] = event['Event Name']
+            combined_data.append(event_data)
+
+    final_data = pd.concat(combined_data)
+    final_data['Separation'] = final_data['Event'] + '_' + final_data['Period']
+
+    final_data = final_data.sort_values(by=['Event', 'Period'], key=lambda x: x.map({'Before': 0, 'After': 1}))
+    pivot_data = final_data.pivot_table(index=['Separation'], columns='Filtered_Genres', values='Proportion', fill_value=0)
+
+    event_order = []
+    for event in selected_events:
+        event_order.append(f"{event}_Before")
+        event_order.append(f"{event}_After")
+        pivot_data.loc[f"{event}_Separation"] = 0  # Ajout de lignes vides
+        event_order.append(f" ")
+
+    pivot_data = pivot_data.reindex(event_order)
+
+    pivot_data.plot(kind='bar', stacked=True, figsize=(15, 8))
+    plt.title("Proportion of Movie Genres Before and After Selected Events")
+    plt.xlabel("Events and Periods")
+    plt.ylabel("Proportion")
+    plt.xticks(rotation=45, ha="right")
+    plt.legend(title="Genres", bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.tight_layout()
+    plt.show()
