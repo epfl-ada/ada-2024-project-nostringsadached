@@ -4,6 +4,9 @@ import geopandas as gpd
 from src.utils.appendix import *
 import matplotlib.patches as mpatches
 import pandas as pd
+from scipy.stats import chisquare
+from sklearn.neighbors import KernelDensity
+from scipy.stats import norm
 
 def plot_boxplot(data, title, xlabel, figsize=(8, 1), color='lightblue', orient='h'):
     """
@@ -351,3 +354,179 @@ def plot_first_look_historical(historical_events_df):
 
     plt.tight_layout()
     plt.show()
+    
+    
+def plot_type_event(df, event_type, outcome, country):
+    events = df[df['Type of Event'].str.contains(event_type, case=False, na=False)]
+    
+    if country:
+        events = events[events['Country'].str.contains(country, case=False, na=False)]
+    
+    if outcome:
+        events = events[events['Outcome'].str.contains(outcome, case=False, na=False)] 
+    
+    events_counts=events.groupby('Year').size()
+    
+    title_evt=event_type
+    if outcome: title_evt=f'{outcome} {event_type}'
+    title = f'Number of {title_evt} Events Over Time'
+    if country:
+        title += f' in {country}'
+    # Plot the number of events over time
+    plt.figure(figsize=(12, 6))
+    plt.plot(events_counts.index, events_counts.values, marker='o', linestyle='-', color='b')
+    plt.title(title)
+    plt.xlabel('Year')
+    plt.ylabel('Number of Events')
+    plt.xticks(rotation=45)
+    plt.grid()
+    plt.tight_layout()
+    plt.show()
+
+
+def ztest(df,year, genre):
+    pre_event=df[df['Year']<year]
+    post_event=df[df['Year']>year]
+    
+    pre_total = pre_event.shape[0]
+    pre_movies = pre_event[pre_event['Genres'].str.contains(genre, case=False, na=False)].shape[0]
+
+    post_total = post_event.shape[0]
+    post_movies = post_event[post_event['Genres'].str.contains(genre, case=False, na=False)].shape[0]
+
+    # Proportions
+    p1 = pre_movies / pre_total
+    p2 = post_movies / post_total
+    
+    # Pooled proportion
+    p = (pre_movies + post_movies) / (pre_total + post_total)
+    
+    # Standard error
+    se = np.sqrt(p * (1 - p) * (1 / pre_total + 1 / post_total))
+
+    # Z-statistic
+    z = (p2 - p1) / se
+
+    # P-value
+    p_value = 1 - norm.cdf(z)
+    
+    # Output results
+    print(f"Proportion of {genre} Movies before {year}:", p1)
+    print(f"Proportion of {genre} Movies after {year}:", p2)
+    print("Z-statistic:", z)
+    print("P-value:", p_value)
+
+    # Interpretation
+    alpha = 0.05
+    if p_value < alpha:
+        print(f"Reject the null hypothesis: There is a significant increase in the proportion of {genre} movies.")
+    else:
+        print(f"Fail to reject the null hypothesis: No significant increase in the proportion of {genre} movies.")
+
+
+def reg_model(df,year, genre, event_name, model):
+    genre_movies = df[df['Genres'].str.contains(genre, case=False, na=False)]
+    total_movies_per_year = df.groupby('Year').size()
+    genre_movies_per_year = genre_movies.groupby('Year').size()
+    
+    # Calculate proportion of political movies per year
+    proportion_genre = (genre_movies_per_year / total_movies_per_year).fillna(0)
+    
+    # Create a DataFrame for regression
+    data = pd.DataFrame({
+        'Year': proportion_genre.index,
+        'Proportion': proportion_genre.values })
+    
+    data['Time'] = data['Year'] - data['Year'].min()  # Time variable for trend
+    data['Post_Event'] = (data['Year'] >= year).astype(int)  # Indicator for post-event
+    data['Time_After'] = data['Time'] * data['Post_Event']  # Interaction term
+    
+    if model=='linear_reg':
+        # Fit the regression model
+        X = sm.add_constant(data[['Time', 'Post_Event', 'Time_After']])
+        model = sm.OLS(data['Proportion'], X).fit()
+        
+    elif model=='poly_reg':
+        # Add polynomial terms (e.g., quadratic, cubic)
+        data['Time_Squared'] = data['Time'] ** 2
+        data['Time_Cubed'] = data['Time'] ** 3
+
+        # Fit the regression model with polynomial terms
+        X = sm.add_constant(data[['Time', 'Time_Squared', 'Time_Cubed', 'Post_Event', 'Time_After']])
+        model = sm.OLS(data['Proportion'], X).fit()
+    
+    # Output regression results
+    print(model.summary())
+
+    # Plot the results
+    plt.figure()
+    plt.scatter(data['Year'], data['Proportion'], label='Observed Proportion', color='royalblue')
+    plt.plot(data['Year'], model.predict(X), label='Fitted Trend', color='darkviolet')
+    plt.axvline(1972, color='red', linestyle='--', label=f'{event_name} ({year})')
+    plt.title(f'Interrupted Time Series: Impact of {event_name} on {genre} Movies')
+    plt.xlabel('Year')
+    plt.ylabel(f'Proportion of {genre} Movies')
+    plt.legend()
+    plt.grid()
+    plt.tight_layout()
+    plt.show()
+    
+    
+
+def kde_model(df, start_year, end_year, genre, event_year, event_name):
+    """
+    Fit a Kernel Density Estimation (KDE) model to analyze the impact of an event on a movie genre.
+
+    Parameters:
+        df (DataFrame): The dataset containing movie information.
+        start_year (int): The starting year for the analysis.
+        end_year (int): The ending year for the analysis.
+        genre (str): The movie genre to analyze (e.g., 'spy').
+        event_year (int): The year of the event being analyzed.
+        event_name (str): A descriptive name of the event.
+
+    Returns:
+        None: Displays the Chi-Square test results and a plot of the observed and fitted KDE curve.
+    """
+    # Step 1: Filter data for the selected genre and years
+    genre_movies = df[df['Genres'].str.contains(genre, case=False, na=False)]
+    genre_movies_counts = genre_movies.groupby('Year').size()
+    relevant_years = genre_movies_counts[(genre_movies_counts.index >= start_year) & 
+                                         (genre_movies_counts.index <= end_year)]
+
+    # Step 2: Prepare KDE for fitting the observed counts
+    years = relevant_years.index.values.reshape(-1, 1)  # Reshape for KDE
+    counts = relevant_years.values
+
+    # Fit KDE model
+    kde = KernelDensity(kernel='gaussian', bandwidth=0.6).fit(years, sample_weight=counts)
+    x = np.linspace(start_year, end_year, 500).reshape(-1, 1)  # Smooth range of years
+    fitted_values = np.exp(kde.score_samples(x))  # Get KDE values
+
+    # Scale KDE to match observed peak
+    fitted_values = fitted_values * (counts.max() / fitted_values.max())
+
+    # Step 3: Perform Chi-Square Goodness-of-Fit Test
+    observed_counts = counts  # Observed counts
+    fitted_counts = np.interp(years.flatten(), x.flatten(), fitted_values)  # Interpolate KDE values
+    fitted_counts = fitted_counts / fitted_counts.sum() * observed_counts.sum()  # Normalize
+
+    chi2_stat, p_value = chisquare(f_obs=observed_counts, f_exp=fitted_counts)
+
+    # Step 4: Print results
+    print(f"Chi-Square Statistic: {chi2_stat:.2f}")
+    print(f"P-Value: {p_value:.2e}")
+
+    # Step 5: Plot observed counts and fitted KDE curve
+    plt.figure()
+    plt.bar(relevant_years.index, observed_counts, label='Observed Counts', color='royalblue', alpha=0.6)
+    plt.plot(x, fitted_values, label='Fitted KDE Curve', color='darkviolet', linewidth=2)
+    plt.axvline(event_year, color='red', linestyle='--', label=f'{event_name} ({event_year})')
+    plt.title(f'Impact of {event_name} on {genre.capitalize()} Movies')
+    plt.xlabel('Year')
+    plt.ylabel(f'Number of {genre.capitalize()} Movies')
+    plt.legend()
+    plt.grid()
+    plt.tight_layout()
+    plt.show()
+
