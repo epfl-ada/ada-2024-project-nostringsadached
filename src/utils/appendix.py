@@ -3,6 +3,10 @@ import ast
 import numpy as np
 import statsmodels.api as sm
 from sklearn.linear_model import LinearRegression
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+import pingouin as pg
+from sklearn.metrics import r2_score
 
 def extract_names(cell):
     #Transform the string of dictionaries into a list of real dictionaries with the id referring to the key and the name referring to the value
@@ -63,6 +67,41 @@ def most_common_genres(movies, genre_counts, top_n):
     
     return movies_common_genre, coverage
 
+def anova_pairwise_turkey(data):
+    anova_table = sm.stats.anova_lm(ols('Proportion ~ Group', data=data).fit(), typ=2)
+    print(anova_table)
+
+    # Check ANOVA significance and perform Tukey post-hoc test
+    if anova_table['PR(>F)'].iloc[0] < 0.05:
+        print("There is a significant difference between at least one pair of groups.")
+        print(pg.pairwise_tukey(data=data, dv='Proportion', between='Group'))
+    else:
+        print("There is no significant difference between the proportions of war movies.")
+
+def evaluate_models(war_movies, models):
+    model_list = []
+    predicted_proportions_list = []
+    summary_list = []
+    
+    for i, (predictors, description) in enumerate(models, start=1):
+        X = war_movies[predictors]  # Select predictor variables
+        y = war_movies['Proportion'].values  # Select target variable
+
+        # Fit model and get predictions + summary
+        model, predicted_proportions, summary = fit_and_evaluate_model(X, y)
+
+        # Store results
+        model_list.append(model)
+        predicted_proportions_list.append(predicted_proportions)
+        summary_list.append(summary)
+
+        # Calculate and print R-squared
+        r2 = r2_score(y, predicted_proportions)
+        print(f"R-squared for model {i} with {description}: {r2:.4f}")
+    
+    return model_list, predicted_proportions_list, summary_list
+
+
 def fit_and_evaluate_model(X, y):
     """
     Fits a linear regression model, predicts values, handles NaN values, 
@@ -82,7 +121,7 @@ def fit_and_evaluate_model(X, y):
     
     X_sm = sm.add_constant(X)  # Add intercept
     model_sm = sm.OLS(y, X_sm).fit()
-       
+
     return model, predicted, model_sm.summary()
 
 

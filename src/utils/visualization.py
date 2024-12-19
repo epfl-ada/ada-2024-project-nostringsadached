@@ -8,35 +8,75 @@ from scipy.stats import chisquare
 from sklearn.neighbors import KernelDensity
 from scipy.stats import norm
 
-def plot_boxplot(data, title, xlabel, figsize=(8, 1), color='lightblue', orient='h'):
-    """
-    Plots a boxplot for the given data.
-
-    Parameters:
-        data (array-like): The data to plot.
-        title (str): The title of the plot.
-        xlabel (str): The label for the x-axis.
-        figsize (tuple): Figure size (default: (8, 1)).
-        color (str): Color of the boxplot (default: 'lightblue').
-        orient (str): Orientation of the boxplot (default: 'h' for horizontal).
-    """
-    plt.figure(figsize=figsize)
-    sns.boxplot(data, color=color, orient=orient)
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.xticks(rotation=45)
-    plt.grid(True, linestyle='--', alpha=0.7)
+def plot_war_movies(war_movies, all_movies):
+    plt.figure(figsize=(8,4))
+    war_movies["Year"].hist(bins=50, range=(all_movies["Year"].min(), all_movies["Year"].max()), color = 'salmon', edgecolor = 'black')
+    plt.xlabel("Year")
+    plt.ylabel("Number of war movies")
+    plt.title("Number of war movies per year")
     plt.show()
 
-def plot_bar(x, y, xlabel, ylabel, title, color='red'):
+def analyze_war_movies(region_name, countries, war_comedy_df, war_drama_df, total_movies_per_year):
+    region_pattern = '|'.join(countries)
+    
+    comedy_filtered = war_comedy_df[war_comedy_df['Countries'].str.contains(region_pattern, case=False, na=False)]
+    drama_filtered = war_drama_df[war_drama_df['Countries'].str.contains(region_pattern, case=False, na=False)]
+    
+    comedy_per_year = comedy_filtered.groupby('Year').size()
+    drama_per_year = drama_filtered.groupby('Year').size()
+    comedy_proportion = (comedy_per_year / total_movies_per_year) * 100
+    drama_proportion = (drama_per_year / total_movies_per_year) * 100
+    
     plt.figure(figsize=(8, 4))
-    plt.bar(x, y, color=color, alpha=0.6)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
+    plt.bar(comedy_proportion.index, comedy_proportion.values, label=f'{region_name} War Comedy Movies Proportion %', color='red', alpha=0.6)
+    plt.bar(drama_proportion.index, drama_proportion.values, label=f'{region_name} War Drama Movies Proportion %', color='limegreen', alpha=0.6)
+    plt.xlabel('Year')
+    plt.ylabel('Proportion of Movies %')
+    plt.title(f'War Comedy Movies and War Drama Movies in {region_name} Over Time')
+    plt.legend(loc='upper right')
+    plt.show()
+    
+
+def plot_bar(x, y, ylabel, title, xlabel='Year', label=None, color='red', orientation='vertical'):
+    plt.figure(figsize=(8, 4))
+    if orientation == 'vertical':
+        plt.bar(x, y, color=color, label=label, alpha=0.6)
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+    elif orientation == 'horizontal':
+        plt.barh(x, y, color=color, label=label, alpha=0.6)
+        plt.xlabel(ylabel)
+        plt.ylabel(xlabel)
+    plt.title(title)
+    if label:
+        plt.legend(loc='upper right')
+    plt.show()
+
+def plot_bar_and_event(events, movies_proportion, title, color='lightgreen'): 
+    plt.figure(figsize=(8, 4))
+    for year in events['Year']:
+        plt.axvline(x=year,color='red',linestyle='--',alpha=0.6)
+        event_name = events[events['Year'] == year]['Name of Incident']
+        plt.text(year, 0, event_name.values[0], rotation=-40, verticalalignment='top')
+
+    plt.bar(movies_proportion.index, movies_proportion.values, color= color)
+    plt.xlabel('Year')
+    plt.ylabel('Proportion of Movies %')
     plt.title(title)
     plt.show()
-   
 
+def plot_lgbt_movie_trend(df, pred):
+    plt.figure(figsize=(8, 4))
+    plt.scatter(df['Year'], df['Counts'], label='Data', alpha=0.6, color='purple')
+
+    # Plot the trend line
+    plt.plot(df['Year'], pred, color='red', linewidth=2, label='Trend Line')
+    plt.xlabel('Year')
+    plt.ylabel('Counts of Movies')
+    plt.title('LGBT Movie Counts Over Time')
+    plt.legend()
+    plt.show()
+    
 def plot_events_map(dataset):
     shapefile_path = 'data/geopandas/ne_110m_admin_0_countries.shp'
     world = gpd.read_file(shapefile_path)
@@ -82,26 +122,6 @@ def plot_movies_map(dataset, movies_per_country):
     plt.title("Number of Movies per Country")
     plt.show()
 
-def analyze_war_movies(region_name, countries, war_comedy_df, war_drama_df, total_movies_per_year):
-    region_pattern = '|'.join(countries)
-    
-    comedy_filtered = war_comedy_df[war_comedy_df['Countries'].str.contains(region_pattern, case=False, na=False)]
-    drama_filtered = war_drama_df[war_drama_df['Countries'].str.contains(region_pattern, case=False, na=False)]
-    
-    comedy_per_year = comedy_filtered.groupby('Year').size()
-    drama_per_year = drama_filtered.groupby('Year').size()
-    comedy_proportion = (comedy_per_year / total_movies_per_year) * 100
-    drama_proportion = (drama_per_year / total_movies_per_year) * 100
-    
-    plt.figure(figsize=(8, 4))
-    plt.bar(comedy_proportion.index, comedy_proportion.values, label=f'{region_name} War Comedy Movies Proportion %', color='red', alpha=0.6)
-    plt.bar(drama_proportion.index, drama_proportion.values, label=f'{region_name} War Drama Movies Proportion %', color='limegreen', alpha=0.6)
-    plt.xlabel('Year')
-    plt.ylabel('Proportion of Movies %')
-    plt.title(f'War Comedy Movies and War Drama Movies in {region_name} Over Time')
-    plt.legend(loc='upper right')
-    plt.show()
-    
 def plot_movie_genres_per_decade(related_genres,total_movies_per_decade,preprocessed_movies):
     plt.figure(figsize=(12, 4))
     for genre, related in related_genres.items():
