@@ -10,7 +10,7 @@ By analyzing the impact of major world events, we seek to understand how periods
 
 * How do major historical events influence trends in cinema genres?
 * Which genres gain or lose popularity during historical periods such as wars or economic crises?
-* Is it possible to build a classifier to predict whether an event will have an Immediate Spike or a Long-Term Influence on genre trends?
+* Do these events translate in Immediate Spike or a Long-Term Influence on genre trends?
 
 ## Proposed additional dataset:
 
@@ -128,7 +128,7 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 (Nouchine) Wrote the entire data story. Continued working on the website.
 
 (Sarah) Implemented a zooming on certain plot to highlight the most relevant things. Worked on new plots for the website.
-Restructured the project: added links, separated useful content from less relevant or uncertain parts. Brainstormed next step.
+Restructured the project: added links, separated useful content from less relevant or uncertain parts.
 Updated the README file.
 
 ▪️ 19/12: 
