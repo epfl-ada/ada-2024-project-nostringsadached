@@ -67,6 +67,17 @@ def most_common_genres(movies, genre_counts, top_n):
     
     return movies_common_genre, coverage
 
+def calculate_genre_coverages(movies, genre_counts, top_n_values=[100, 30, 10, 3]):
+    genre_counts_list = [genre_counts.iloc[:n] for n in top_n_values]
+    coverages = {}
+    for top_n, genre_counts_subset in zip(top_n_values, genre_counts_list):
+        _, coverage = most_common_genres(movies, genre_counts_subset, top_n)
+        coverages[top_n] = coverage
+    
+    for top_n, coverage in coverages.items():
+        print(f"Number of films covered by the {top_n} major genres: {coverage:.2f}%")
+
+
 def anova_pairwise_turkey(data):
     anova_table = sm.stats.anova_lm(ols('Proportion ~ Group', data=data).fit(), typ=2)
     print(anova_table)

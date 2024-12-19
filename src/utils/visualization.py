@@ -8,6 +8,63 @@ from scipy.stats import chisquare
 from sklearn.neighbors import KernelDensity
 from scipy.stats import norm
 
+def plot_boxplot(data, title, xlabel, figsize=(8, 1), color='lightblue', orient='h'):
+    plt.figure(figsize=figsize)
+    sns.boxplot(data, color=color, orient=orient)
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.xticks(rotation=45)
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.show()
+
+def plot_decade_histogram(movies):
+    decade=(movies['Year'] // 10) * 10
+    plt.figure(figsize=(8, 3))
+    decade.hist(bins=range(decade.min(), decade.max() + 10, 10), color='salmon', edgecolor='black')
+    plt.xlabel("Decade")
+    plt.ylabel("Number of movies")
+    plt.xticks(range(decade.min(), decade.max() + 10, 10))
+    plt.title("Number of movies per decade")
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.show()
+
+def plot_top_genres(genres,n):
+    # Select the top n genres
+    top_genres = genres.head(n)
+    plt.figure(figsize=(7, 5))
+    top_genres.plot(kind='barh', color='#9370DB')
+    plt.xlabel('Number of movies')
+    plt.title(f'Distribution of the {n} most widespread genres', fontsize=16)
+    plt.gca().invert_yaxis()
+    
+    for index, value in enumerate(top_genres):
+        plt.text(value + 100, index, str(value), va='center')
+    plt.show()
+
+def plot_top_countries(movies, top_n):
+    countries_counts = movies['Countries'].str.split(', ').explode().value_counts()
+    top_countries = countries_counts.head(top_n)
+    top_countries_df = top_countries.reset_index()
+    top_countries_df.columns = ['Countries', 'Count']
+    # Using a logarithmic scale
+    plt.figure(figsize=(10, 5))
+    sns.barplot(x='Countries', y='Count', data=top_countries_df)
+    plt.xticks(rotation=90)
+    plt.yscale('log')
+    plt.title(f'Frequency of Top {top_n} Countries (Log Scale)')
+    plt.ylabel('Count (Log Scale)')
+    plt.show()   
+
+def plot_average_genres_per_year(movies):
+    plt.figure(figsize=(8,4))
+    sns.lineplot(data=movies, x='Year', y='Genre_count')
+    plt.title('Average Number of Genres per Movie Each Year')
+    plt.xlabel('Year')
+    plt.ylabel('Average Number of Genres')
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
 def plot_war_movies(war_movies, all_movies):
     plt.figure(figsize=(8,4))
     war_movies["Year"].hist(bins=50, range=(all_movies["Year"].min(), all_movies["Year"].max()), color = 'salmon', edgecolor = 'black')
@@ -35,7 +92,6 @@ def analyze_war_movies(region_name, countries, war_comedy_df, war_drama_df, tota
     plt.title(f'War Comedy Movies and War Drama Movies in {region_name} Over Time')
     plt.legend(loc='upper right')
     plt.show()
-    
 
 def plot_bar(x, y, ylabel, title, xlabel='Year', label=None, color='red', orientation='vertical'):
     plt.figure(figsize=(8, 4))
@@ -123,10 +179,10 @@ def plot_movies_map(dataset, movies_per_country):
     plt.title("Number of Movies per Country")
     plt.show()
 
-def plot_movie_genres_per_decade(related_genres,total_movies_per_decade,preprocessed_movies):
+def plot_movie_genres_per_decade(related_genres,total_movies_per_decade,movies):
     plt.figure(figsize=(12, 4))
     for genre, related in related_genres.items():
-        related_data = filter_genre_country(preprocessed_movies, '|'.join(related))
+        related_data = filter_genre_country(movies, '|'.join(related))
         related_data_per_decade = group_by_decade(related_data)
         # Align the indices of related_data_per_decade and total_movies_per_decade
         aligned_data = related_data_per_decade.reindex(total_movies_per_decade.index, fill_value=0)
