@@ -181,7 +181,7 @@ def plot_genre_proportion_and_event(df, total_movies, genre_pattern, genre_name,
     title = f'Proportion of {genre_name} Films Over Time'
     if country:
         title += f' in {country}'
-    plt.plot(genre_films_proportion.index, genre_films_proportion.values, color='navy')
+    plt.bar(genre_films_proportion.index, genre_films_proportion.values, color='royalblue')
     plt.xlabel('Year')
     plt.ylabel(f'Proportion of {genre_name} Movies (%)')
     plt.title(title)
@@ -221,7 +221,7 @@ def plot_genre_number_and_event(df, genre_pattern, genre_name, event_name, event
     title = f'Number of {genre_name} Films Over Time'
     if country:
         title += f' in {country}'
-    plt.plot(genre_films_per_year.index, genre_films_per_year.values, color='navy')
+    plt.bar(genre_films_per_year.index, genre_films_per_year.values, color='royalblue')
     plt.xlabel('Year')
     plt.ylabel(f'Number of {genre_name} Movies (%)')
     plt.title(title)
