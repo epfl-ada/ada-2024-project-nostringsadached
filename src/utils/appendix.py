@@ -118,19 +118,16 @@ def fit_and_evaluate_model(X, y):
     Fits a linear regression model, predicts values, handles NaN values, 
     and prints a statistical summary using statsmodels.
     """
-    # Remove NaN values
     mask = ~np.isnan(y)
     X = X[mask]
     y = y[mask]
     
-    # Fit the linear regression model
     model = LinearRegression()
     model.fit(X, y)
     
-    # Predict the values
     predicted = model.predict(X)
     
-    X_sm = sm.add_constant(X)  # Add intercept
+    X_sm = sm.add_constant(X) 
     model_sm = sm.OLS(y, X_sm).fit()
 
     return model, predicted, model_sm.summary()
