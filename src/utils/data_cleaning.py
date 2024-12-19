@@ -12,11 +12,8 @@ def preprocess_movies(raw_movies_data):
     
     #Remove the word \"Language\" from the Languages column.
     raw_movies_data["Languages"] = raw_movies_data["Languages"].str.replace('Language', '', regex=True)
-    
-    # year formatting
     raw_movies_data['Year'] = raw_movies_data['Movie release date'].apply(extract_year)
     raw_movies_data.drop(columns=["Movie release date"], inplace=True)
-    
     #Replace " " by NaN
     raw_movies_data.replace(r'^\s*$', np.nan, regex=True, inplace=True)
 
@@ -25,9 +22,11 @@ def preprocess_movies(raw_movies_data):
     
     #keep only until 2013
     raw_movies_data = raw_movies_data[raw_movies_data['Year'] <= 2013]
-    
-    return raw_movies_data
 
+    raw_movies_data = raw_movies_data.dropna(subset=["Year"])
+    raw_movies_data['Year'] = raw_movies_data['Year'].astype(int)
+
+    return raw_movies_data
 
 
 def preprocess_events(raw_events_data, first_movie_year, last_movie_year):
