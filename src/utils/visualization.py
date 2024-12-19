@@ -57,8 +57,8 @@ def plot_bar_and_event(events, movies_proportion, title, color='lightgreen'):
     for year in events['Year']:
         plt.axvline(x=year,color='red',linestyle='--',alpha=0.6)
         event_name = events[events['Year'] == year]['Name of Incident']
-        plt.text(year, 0, event_name.values[0], rotation=-40, verticalalignment='top')
-
+        plt.text(year, 0, event_name .values[0], rotation=-40, verticalalignment='top')  
+        
     plt.bar(movies_proportion.index, movies_proportion.values, color= color)
     plt.xlabel('Year')
     plt.ylabel('Proportion of Movies %')
@@ -66,11 +66,12 @@ def plot_bar_and_event(events, movies_proportion, title, color='lightgreen'):
     plt.show()
 
 def plot_lgbt_movie_trend(df, pred):
-    plt.figure(figsize=(8, 4))
+    plt.figure(figsize=(8,4))
     plt.scatter(df['Year'], df['Counts'], label='Data', alpha=0.6, color='purple')
 
     # Plot the trend line
     plt.plot(df['Year'], pred, color='red', linewidth=2, label='Trend Line')
+
     plt.xlabel('Year')
     plt.ylabel('Counts of Movies')
     plt.title('LGBT Movie Counts Over Time')
