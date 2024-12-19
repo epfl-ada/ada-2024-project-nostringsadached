@@ -580,3 +580,121 @@ def kde_model(df, start_year, end_year, genre, event_year, event_name):
     plt.tight_layout()
     plt.show()
 
+
+from scipy.optimize import curve_fit
+
+
+# Step 1: Define the exponential growth function
+def exponential_growth(x, a, b):
+    return a * np.exp(b * x)
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+
+
+def plot_exponential_fit(data, total_movies_per_year, genre, start_year, end_year, genre_name, event_name, event_year=None):
+    """
+    Plot the observed proportions of a specific genre over time and fit an exponential growth model.
+    Include statistical insights such as growth factor over the period and doubling time.
+
+    Parameters:
+        data (DataFrame): The dataset containing movie information.
+        total_movies_per_year (Series): Total number of movies produced per year.
+        genre (str): The movie genre to analyze (e.g., 'chinese', 'japanese').
+        start_year (int): The starting year for analysis.
+        end_year (int): The ending year for analysis.
+        genre_name (str): A descriptive name for the genre (used in the plot legend).
+        event_name (str): Name of the significant event to highlight in the plot.
+        event_year (int, optional): The year of the event (used to mark on the plot).
+
+    Returns:
+        None: Displays the plot and prints the exponential fit parameters and statistical insights.
+    """
+    #Filter data for the specified genre and time range
+    genre_data = data[data['Genres'].str.contains(genre, case=False, na=False)]
+    yearly_counts = genre_data.groupby('Year').size()
+    yearly_proportions = (yearly_counts / total_movies_per_year).fillna(0)  # Proportions of movies per year
+
+    # Filter for the relevant years
+    yearly_proportions = yearly_proportions[(yearly_proportions.index >= start_year) & (yearly_proportions.index <= end_year)]
+    x = (yearly_proportions.index - start_year).values  # Normalize the years (relative to start_year)
+    y = yearly_proportions.values
+
+    # Fit the exponential growth model
+    params, _ = curve_fit(exponential_growth, x, y, p0=[0.001, 0.01])  # Initial guesses for a and b
+    a, b = params
+
+    fitted_x = np.linspace(0, x[-1], 500)
+    fitted_y = exponential_growth(fitted_x, a, b)
+
+    #Statistical Analysis
+    initial_proportion = exponential_growth(0, a, b)
+    final_proportion = exponential_growth(x[-1], a, b)
+    growth_factor = final_proportion / initial_proportion  # How many times the proportion increased
+    doubling_time = np.log(2) / b if b > 0 else np.inf  # Time required for the proportion to double
+
+    
+    print(f'{genre_name} Exponential Fit Parameters:')
+    print(f'  Initial Value (a): {a:.4f}')
+    print(f'  Growth Rate (b): {b:.4f}')
+    print(f'  Proportion Increase Over {end_year - start_year} Years: {growth_factor:.2f}x')
+    print(f'  Doubling Time: {doubling_time:.2f} Years')
+
+    plt.figure()
+    plt.scatter(yearly_proportions.index, y, label=f'{genre_name} (Observed)', color='blue', alpha=0.6)
+    plt.plot(yearly_proportions.index[0] + fitted_x, fitted_y, label=f'{genre_name} (Fitted)', color='darkorange', linewidth=2)
+
+    # Highlight the event year if provided
+    if event_year:
+        plt.axvline(event_year, color='red', linestyle='--', label=f'{event_name} ({event_year})')
+
+    plt.title(f'Exponential Fit for {genre_name} Movies Over Time')
+    plt.xlabel('Year')
+    plt.ylabel(f'Proportion of {genre_name} Movies (%)')
+    plt.legend()
+    plt.grid()
+    plt.tight_layout()
+    plt.show()
+
+
+def fit_exponential_and_compare(data, total_movies_per_year, genre, start_year, end_year, genre_name, color):
+    # Filter data for the specified genre and time range
+    genre_data = data[data['Genres'].str.contains(genre, case=False, na=False)]
+    yearly_counts = genre_data.groupby('Year').size()
+    yearly_proportions = (yearly_counts / total_movies_per_year).fillna(0)  # Proportions
+
+    # Filter relevant years
+    yearly_proportions = yearly_proportions[(yearly_proportions.index >= start_year) & (yearly_proportions.index <= end_year)]
+    x = (yearly_proportions.index - start_year).values  # Time variable (normalized years)
+    y = yearly_proportions.values  # Proportion values
+
+    # Fit the exponential model
+    params, _ = curve_fit(exponential_growth, x, y, p0=[0.001, 0.01])  # Initial guesses for a and b
+    a, b = params  # Extract parameters
+
+    fitted_y = exponential_growth(x, a, b)
+
+    # Calculate R-squared
+    residuals = y - fitted_y
+    ss_res = np.sum(residuals**2)
+    ss_tot = np.sum((y - np.mean(y))**2)
+    r_squared = 1 - (ss_res / ss_tot)
+
+    # Calculate growth factor and doubling time
+    initial_proportion = exponential_growth(0, a, b)
+    final_proportion = exponential_growth(x[-1], a, b)
+    growth_factor = final_proportion / initial_proportion
+    doubling_time = np.log(2) / b if b > 0 else np.inf
+
+    # Plot observed data and fitted curve
+    plt.scatter(yearly_proportions.index, y, label=f'{genre_name} (Observed)', color=color, alpha=0.6)
+    plt.plot(yearly_proportions.index, fitted_y, label=f'{genre_name} (Fitted)', color=color, linewidth=2)
+
+    # Return results as a dictionary
+    return {
+        "Genre": genre_name,
+        "Growth Rate (b)": b,
+        "Doubling Time (Years)": doubling_time,
+        "Growth Factor": growth_factor,
+        "R-squared": r_squared
+    }
