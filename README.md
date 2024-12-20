@@ -109,7 +109,7 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 (Sarah) Created a more relevant historical dataset manually with the help of a language model to overcome limitations of the original dataset and began conducting analyses and general visualizations to represent both datasets together. Reorganized the notebook by structuring methods into the appendix and improving transitions between sections for better flow. Updated the README file.
 
-(Nouchine) Began working on the website and the Data Story layout, structure and text redaction.
+(Nouchine) Began working on the website and the Data Story layout, structure and text redaction. Found a good template for the site and created the repository. Began redaction of the Data Story.
 
 ▪️ 17/12: 
 
@@ -119,13 +119,13 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 (Diane) Kept investigating new pairs of genres and events, reflected on how to connect them and brainstormed ideas.
 
-(Nouchine) Finished the website's framework.
+(Nouchine) Finished the website's framework. Kept working on the Data Story and starting filling in the website with the text.
 
 ▪️ 18/12: 
 
 (Diane) Worked on deepening the analysis with statistical methods and finding more event-genre pairs.
 
-(Nouchine) Wrote the entire data story. Continued working on the website.
+(Nouchine) Wrote the entire data story. Continued working on the website. Added some graphical details to the website to make everything look tidy and nice. Implemented the changes of the notebook onto the website.
 
 (Sarah) Implemented a zooming on certain plot to highlight the most relevant things. Worked on new plots for the website.
 Restructured the project: added links, separated useful content from less relevant or uncertain parts.
@@ -139,7 +139,7 @@ Updated the README file.
 
 (Laurine)...
 
-(Nouchine)...
+(Nouchine) Finished adding the Data Story to the website and completed the notebook advancements into the website. Rereading the website, modifications of text an correction of mistakes. Proofreading the notebook.
 
 (Sarah) Worked on building a classifier to predict whether an event will have an Immediate Spike or a Long-Term Influence on movie genre trends.
 
