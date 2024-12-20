@@ -86,15 +86,15 @@ def analyze_war_movies(region_name, countries, war_comedy_df, war_drama_df, tota
     drama_proportion = (drama_per_year / total_movies_per_year) * 100
     
     plt.figure(figsize=(8, 4))
-    plt.bar(comedy_proportion.index, comedy_proportion.values, label=f'{region_name} War Comedy Movies Proportion %', color='red', alpha=0.6)
-    plt.bar(drama_proportion.index, drama_proportion.values, label=f'{region_name} War Drama Movies Proportion %', color='limegreen', alpha=0.6)
+    plt.bar(comedy_proportion.index, comedy_proportion.values, label=f'{region_name} War Comedy Movies Proportion %', color='maroon', alpha=0.6)
+    plt.bar(drama_proportion.index, drama_proportion.values, label=f'{region_name} War Drama Movies Proportion %', color='#f4a1a1', alpha=0.6)
     plt.xlabel('Year')
     plt.ylabel('Proportion of Movies %')
     plt.title(f'War Comedy Movies and War Drama Movies in {region_name} Over Time')
     plt.legend(loc='upper right')
     plt.show()
 
-def plot_bar(x, y, ylabel, title, xlabel='Year', label=None, color='red', orientation='vertical'):
+def plot_bar(x, y, ylabel, title, xlabel='Year', label=None, color='#f4a1a1', orientation='vertical'):
     plt.figure(figsize=(8, 4))
     if orientation == 'vertical':
         plt.bar(x, y, color=color, label=label, alpha=0.6)
@@ -254,15 +254,15 @@ def plot_genre_proportion_and_event(df, total_movies, genre_pattern, genre_name,
     title = f'Proportion of {genre_name} Films Over Time'
     if country:
         title += f' in {country}'
-    plt.bar(genre_films_proportion.index, genre_films_proportion.values, color='royalblue')
+    plt.bar(genre_films_proportion.index, genre_films_proportion.values, color='#c4716c')
     plt.xlabel('Year')
     plt.ylabel(f'Proportion of {genre_name} Movies (%)')
     plt.title(title)
 
     if is_period:
-        plt.axvspan(event_dates[0], event_dates[1], color='lightblue', alpha=0.3, label=event_name)
+        plt.axvspan(event_dates[0], event_dates[1], color='#f4a1a1', alpha=0.3, label=event_name)
     else:
-        plt.axvline(x=event_dates[0], color='red', linestyle='--', label=event_name)
+        plt.axvline(x=event_dates[0], color='maroon', linestyle='--', label=event_name)
 
     plt.legend()
     plt.show()
@@ -357,8 +357,8 @@ def plot_actual_vs_predicted(years, actual, predicted, model, title="Trend of Wa
     """
 
     plt.figure(figsize=(8, 4))
-    plt.plot(years, actual, label='Actual Proportion', color='blue')
-    plt.plot(years, predicted, label='Predicted Proportion', color='red', linestyle='--')
+    plt.plot(years, actual, label='Actual Proportion', color='#f4a1a1')
+    plt.plot(years, predicted, label='Predicted Proportion', color='maroon', linestyle='--')
 
     plt.xlabel('Year')
     plt.ylabel('Proportion of War Movies (%)')
@@ -555,9 +555,9 @@ def reg_model(df,year, genre, event_name, model):
     print(model.summary())
 
     plt.figure()
-    plt.scatter(data['Year'], data['Proportion'], label='Observed Proportion', color='royalblue')
-    plt.plot(data['Year'], model.predict(X), label='Fitted Trend', color='darkviolet')
-    plt.axvline(1972, color='red', linestyle='--', label=f'{event_name} ({year})')
+    plt.scatter(data['Year'], data['Proportion'], label='Observed Proportion', color='#f4a1a1')
+    plt.plot(data['Year'], model.predict(X), label='Fitted Trend', color='#c4716c')
+    plt.axvline(1972, color='maroon', linestyle='--', label=f'{event_name} ({year})')
     plt.title(f'Interrupted Time Series: Impact of {event_name} on {genre} Movies')
     plt.xlabel('Year')
     plt.ylabel(f'Proportion of {genre} Movies')
