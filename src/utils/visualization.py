@@ -307,8 +307,10 @@ def plot_genre_number_and_event(df, genre_pattern, genre_name, event_name, event
     plt.legend()
     plt.show()
 
-def plot_global_plot(historical,movies):
-    sns.set_palette("pastel")
+def plot_global_plot(historical, movies):
+    custom_palette = ['#f4a1a1', '#85E3FF', '#B9FBC0', '#FFC3A0', '#FFABAB', '#C4C6E7', '#F7D9E1']
+    
+    sns.set_palette(custom_palette)  
 
     combined_data = []
     for _, event in historical.iterrows():
@@ -328,13 +330,12 @@ def plot_global_plot(historical,movies):
     final_data = final_data.sort_values(by=['Event', 'Period'], key=lambda x: x.map({'Before': 0, 'After': 1}))
     pivot_data = final_data.pivot_table(index=['Separation'], columns='Filtered_Genres', values='Proportion', fill_value=0)
 
-
     for sep in [i for i in pivot_data.index if "Separation" in i]:
         pivot_data.loc[sep] = 0
 
     pivot_data = pivot_data.reindex(event_order)
 
-    pivot_data.plot(kind='bar', stacked=True, figsize=(18, 8))
+    pivot_data.plot(kind='bar', stacked=True, figsize=(18, 8), color=custom_palette) 
     plt.title("Proportion of Movie Genres Before and After Events")
     plt.xlabel("Events and Periods")
     plt.ylabel("Proportion")
@@ -365,7 +366,9 @@ def plot_actual_vs_predicted(years, actual, predicted, model, title="Trend of Wa
     plt.show()
 
 def plot_selected_events(historical, movies, selected_events):
-    sns.set_palette("pastel")
+    custom_palette = ['#f4a1a1', '#85E3FF', '#B9FBC0', '#FFC3A0', '#FFABAB', '#C4C6E7', '#F7D9E1']
+    
+    sns.set_palette(custom_palette) 
 
     combined_data = []
     for _, event in historical.iterrows():
@@ -389,7 +392,7 @@ def plot_selected_events(historical, movies, selected_events):
 
     pivot_data = pivot_data.reindex(event_order)
 
-    pivot_data.plot(kind='bar', stacked=True, figsize=(15, 8))
+    pivot_data.plot(kind='bar', stacked=True, figsize=(15, 8), color=custom_palette)  # Appliquer la palette
     plt.title("Proportion of Movie Genres Before and After Selected Events")
     plt.xlabel("Events and Periods")
     plt.ylabel("Proportion")
@@ -397,6 +400,8 @@ def plot_selected_events(historical, movies, selected_events):
     plt.legend(title="Genres", bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.tight_layout()
     plt.show()
+
+
 
 def plot_original_dataset(historical_events_df):
     colors_location = ['#FFB5E8', '#85E3FF', '#B9FBC0', '#FFABAB', '#FFC3A0']
