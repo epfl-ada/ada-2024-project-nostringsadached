@@ -308,7 +308,7 @@ def plot_genre_number_and_event(df, genre_pattern, genre_name, event_name, event
     plt.show()
 
 def plot_global_plot(historical, movies):
-    custom_palette = ['#f4a1a1', '#85E3FF', '#B9FBC0', '#FFC3A0', '#FFABAB', '#8A91D0', '#F7D9E1']
+    custom_palette = ['#f4a1a1', '#85E3FF', '#B9FBC0', '#FFC3A0', '#ffedab', '#C4C6E7', '#8A91D0']
 
     
     sns.set_palette(custom_palette)  
@@ -367,9 +367,7 @@ def plot_actual_vs_predicted(years, actual, predicted, model, title="Trend of Wa
     plt.show()
 
 def plot_selected_events(historical, movies, selected_events):
-    custom_palette = ['#f4a1a1', '#85E3FF', '#B9FBC0', '#FFC3A0', '#FFABAB', '#8A91D0', '#F7D9E1']
-
-    
+    custom_palette = ['#f4a1a1', '#85E3FF', '#B9FBC0', '#FFC3A0', '#ffedab', '#C4C6E7', '#8A91D0']
     sns.set_palette(custom_palette) 
 
     combined_data = []
