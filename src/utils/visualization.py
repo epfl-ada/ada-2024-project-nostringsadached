@@ -396,9 +396,43 @@ def plot_selected_events(historical, movies, selected_events):
     plt.legend(title="Genres", bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.tight_layout()
     plt.show()
+
+def plot_original_dataset(historical_events_df):
+    colors_location = ['#FFB5E8', '#85E3FF', '#B9FBC0', '#FFABAB', '#FFC3A0']
+
+    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+
+    # By Country
+    country_counts = historical_events_df['Country'].value_counts()
+    country_counts = country_counts[country_counts > 10]  # Filtering countries with counts greater than 10
+    axes[0].bar(country_counts.index, country_counts.values, color=colors_location[:len(country_counts)])
+    axes[0].set_title("Distribution of events by Country (contry with more than 10 events)")
+    axes[0].tick_params(axis='x', rotation=90)
+
+    # By Year
+    sns.histplot(data=historical_events_df, x='Year', bins=20, kde=True, color="lightblue", ax=axes[1])
+    axes[1].set_title("Distribution of historical events by Year")
+    axes[1].set_xlabel("Year")
+    axes[1].set_ylabel("Number of events")
+
+    # By Type of Event
+    e_types_counts = historical_events_df['Type of Event'].str.split(', ').explode().value_counts()
+    t_events = e_types_counts[e_types_counts > 10]  # Filtering events with counts greater than 15
+    num_bars = len(t_events)
+    colors = plt.cm.rainbow(np.linspace(0, 1, num_bars))  # Color mapping for bars
+
+    # Plot Type of Events
+    axes[2].barh(t_events.index, t_events.values, color=colors)
+    axes[2].set_title('Distribution of the types of events(event with more than 10 occurences)')
+    axes[2].tick_params(axis='y', labelsize=8)  # Adjust y-tick label font size
+    axes[2].invert_yaxis()  # Invert the y-axis to have the highest values at the top
+
+    plt.tight_layout()
+    plt.show()
+
+ 
     
-    
-def plot_first_look_historical(historical_events_df):
+def plot_manual_dataset(historical_events_df):
     colors_location = ['#FFB5E8', '#85E3FF', '#B9FBC0', '#FFABAB', '#FFC3A0']
     colors_impact = ['#FFB5E8', '#B28DFF', '#FFABAB']
 
@@ -420,6 +454,7 @@ def plot_first_look_historical(historical_events_df):
     axes[2].set_title("Distribution of historical events by Year")
     axes[2].set_xlabel("Year")
     axes[2].set_ylabel("Number of events")
+
 
     plt.tight_layout()
     plt.show()
