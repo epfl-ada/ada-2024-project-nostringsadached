@@ -1,6 +1,6 @@
 # Historical and sociocultural analysis of film genre trends: Impact of world events and box office successes
 
-## Data Story
+## Data Story:
 
 https://noushskadoush.github.io/adatched_data_story/
 
