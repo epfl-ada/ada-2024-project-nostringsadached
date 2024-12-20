@@ -1,5 +1,9 @@
 # Historical and sociocultural analysis of film genre trends: Impact of world events and box office successes
 
+## Data Story
+
+https://noushskadoush.github.io/adatched_data_story/
+
 ## Abstract: 
 
 This project explores the historical evolution of film genres, analyzing how societal and historical contexts have influenced trends in cinema.
