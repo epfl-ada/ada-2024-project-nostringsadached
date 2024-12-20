@@ -155,11 +155,12 @@ def genre_filter(genre_string, genres_list):
 
 # Function to determine if a movie year is before or after an event
 def get_event_period(year, event_row):
-    if year < event_row['Year']:
+    event_year = event_row['Year']
+    if event_year - 5 <= year < event_year:  # Within 5 years before the event
         return 'Before'
-    elif year >= event_row['Year']:
+    elif year >= event_year:  # After the event year
         return 'After'
-    return 'No Event'
+    return 'No Event'  # Exclude other years
 
 # Function to process movies for a specific event
 def process_event(event_row,movies):
