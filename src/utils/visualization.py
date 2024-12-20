@@ -49,7 +49,7 @@ def plot_top_countries(movies, top_n):
     top_countries_df.columns = ['Countries', 'Count']
     # Using a logarithmic scale
     plt.figure(figsize=(10, 5))
-    sns.barplot(x='Countries', y='Count', data=top_countries_df)
+    sns.barplot(x='Countries', y='Count', data=top_countries_df, color="#f4a1a1")
     plt.xticks(rotation=90)
     plt.yscale('log')
     plt.title(f'Frequency of Top {top_n} Countries (Log Scale)')
@@ -208,20 +208,7 @@ def plot_genre_trends_per_country(country,historical_data,movie_metadata):
         genre_handles.append(line)
 
     country_events = get_country_events(historical_data, country)
-    #event_colors = plt.cm.tab20.colors 
-    pastel_colors = [
-    "#FFB3BA",  # Rose pastel
-    "#FFDFBA",  # Orange pastel
-    "#FFFFBA",  # Jaune pastel
-    "#BAE1FF",  # Bleu pastel
-    "#B9FBC0",  # Vert pastel
-    "#C9BBF6",  # Violet pastel
-    "#FFCCE5",  # Rose clair pastel
-    "#F7D9E1",  # Rose pâle
-    "#FFC3A0",  # Pêche pastel
-    "#E2F0CB",  # Vert clair pastel
-    ]
-    event_colors = ListedColormap(pastel_colors)
+    event_colors = plt.cm.tab20.colors 
     event_handles = []
 
     for idx, (_, event) in enumerate(country_events.iterrows()):
