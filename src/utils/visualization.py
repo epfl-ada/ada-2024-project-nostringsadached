@@ -56,14 +56,15 @@ def plot_top_countries(movies, top_n):
     plt.show()   
 
 def plot_average_genres_per_year(movies):
-    plt.figure(figsize=(8,4))
-    sns.lineplot(data=movies, x='Year', y='Genre_count')
+    plt.figure(figsize=(8, 4))
+    sns.lineplot(data=movies, x='Year', y='Genre_count', color='#f4a1a1')  # Définit la couleur bordeaux
     plt.title('Average Number of Genres per Movie Each Year')
     plt.xlabel('Year')
     plt.ylabel('Average Number of Genres')
     plt.grid(True)
     plt.tight_layout()
     plt.show()
+
 
 def plot_war_movies(war_movies, all_movies):
     plt.figure(figsize=(8,4))
@@ -733,3 +734,26 @@ def fit_exponential_and_compare(data, total_movies_per_year, genre, start_year, 
         "Growth Factor": growth_factor,
         "R-squared": r_squared
     }
+
+def plot_top_genres_correlation(genre_counts, preprocessed_movies, top_n=30):
+
+    # Select the top N genres
+    genre_counts_top_n = genre_counts.iloc[:top_n]
+
+    most_common_genres_df, coverage = most_common_genres(preprocessed_movies, genre_counts_top_n, top_n)
+    most_common_genres_df = most_common_genres_df.dropna(subset=['Genres'])
+
+    mlb = MultiLabelBinarizer()
+    genre_binary_matrix = pd.DataFrame(
+        mlb.fit_transform(most_common_genres_df['Genres'].str.split(', ')),
+        columns=mlb.classes_,
+        index=most_common_genres_df.index
+    )
+
+    # Compute the correlation matrix
+    genre_correlation = genre_binary_matrix.corr()
+    plt.figure(figsize=(18, 12))
+    mask = np.triu(np.ones_like(genre_correlation, dtype=bool))
+    sns.heatmap(genre_correlation, mask=mask, cmap='coolwarm', annot=True, fmt=".2f")
+    plt.title(f'Correlation Between Top {top_n} Movie Genres')
+    plt.show()

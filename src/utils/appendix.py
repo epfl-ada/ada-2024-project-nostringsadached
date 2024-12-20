@@ -7,6 +7,7 @@ import statsmodels.api as sm
 from statsmodels.formula.api import ols
 import pingouin as pg
 from sklearn.metrics import r2_score
+from sklearn.preprocessing import MultiLabelBinarizer
 
 def extract_names(cell):
     #Transform the string of dictionaries into a list of real dictionaries with the id referring to the key and the name referring to the value
@@ -168,4 +169,3 @@ def process_event(event_row,movies):
     result = temp_df.groupby(['Period', 'Filtered_Genres']).size().reset_index(name='Count')
     result['Proportion'] = result.groupby('Period')['Count'].transform(lambda x: x / x.sum())
     return result
-
