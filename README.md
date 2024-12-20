@@ -134,7 +134,7 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 (Nouchine) Wrote the entire data story. Continued working on the website. Added some graphical details to the website to make everything look tidy and nice. Implemented the changes of the notebook onto the website.
 
 (Sarah) Implemented a zooming on certain plot to highlight the most relevant things. Worked on new plots for the website.
-Restructured the project: added links, separated useful content from less relevant or uncertain parts.
+Restructured the project: added links, separated useful content from less relevant or uncertain parts. Provided support to Nouchine in refining the website's narrative.
 Updated the README file.
 
 ▪️ 19/12: 
