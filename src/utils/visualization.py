@@ -109,10 +109,10 @@ def plot_bar(x, y, ylabel, title, xlabel='Year', label=None, color='#f4a1a1', or
         plt.legend(loc='upper right')
     plt.show()
 
-def plot_bar_and_event(events, movies_proportion, title, color='lightgreen'): 
+def plot_bar_and_event(events, movies_proportion, title, color='#f4a1a1'): 
     plt.figure(figsize=(8, 4))
     for year in events['Year']:
-        plt.axvline(x=year,color='red',linestyle='--',alpha=0.6)
+        plt.axvline(x=year,color='maroon',linestyle='--',alpha=0.6)
         event_name = events[events['Year'] == year]['Name of Incident']
         plt.text(year, 0, event_name .values[0], rotation=-40, verticalalignment='top')  
         
@@ -124,9 +124,9 @@ def plot_bar_and_event(events, movies_proportion, title, color='lightgreen'):
 
 def plot_lgbt_movie_trend(df, pred):
     plt.figure(figsize=(8,4))
-    plt.scatter(df['Year'], df['Counts'], label='Data', alpha=0.6, color='purple')
+    plt.scatter(df['Year'], df['Counts'], label='Data', alpha=0.6, color='#f4a1a1')
 
-    plt.plot(df['Year'], pred, color='red', linewidth=2, label='Trend Line')
+    plt.plot(df['Year'], pred, color='maroon', linewidth=2, label='Trend Line')
 
     plt.xlabel('Year')
     plt.ylabel('Counts of Movies')
@@ -609,9 +609,9 @@ def kde_model(df, start_year, end_year, genre, event_year, event_name):
     print(f"P-Value: {p_value:.2e}")
 
     plt.figure()
-    plt.bar(relevant_years.index, observed_counts, label='Observed Counts', color='royalblue', alpha=0.6)
-    plt.plot(x, fitted_values, label='Fitted KDE Curve', color='darkviolet', linewidth=2)
-    plt.axvline(event_year, color='red', linestyle='--', label=f'{event_name} ({event_year})')
+    plt.bar(relevant_years.index, observed_counts, label='Observed Counts', color='#f4a1a1', alpha=0.6)
+    plt.plot(x, fitted_values, label='Fitted KDE Curve', color='#c4716c', linewidth=2)
+    plt.axvline(event_year, color='maroon', linestyle='--', label=f'{event_name} ({event_year})')
     plt.title(f'Impact of {event_name} on {genre.capitalize()} Movies')
     plt.xlabel('Year')
     plt.ylabel(f'Number of {genre.capitalize()} Movies')
@@ -681,12 +681,12 @@ def plot_exponential_fit(data, total_movies_per_year, genre, start_year, end_yea
     print(f'  Doubling Time: {doubling_time:.2f} Years')
 
     plt.figure()
-    plt.scatter(yearly_proportions.index, y, label=f'{genre_name} (Observed)', color='blue', alpha=0.6)
-    plt.plot(yearly_proportions.index[0] + fitted_x, fitted_y, label=f'{genre_name} (Fitted)', color='darkorange', linewidth=2)
+    plt.scatter(yearly_proportions.index, y, label=f'{genre_name} (Observed)', color='#f4a1a1', alpha=0.6)
+    plt.plot(yearly_proportions.index[0] + fitted_x, fitted_y, label=f'{genre_name} (Fitted)', color='#c4716c', linewidth=2)
 
     # Highlight the event year if provided
     if event_year:
-        plt.axvline(event_year, color='red', linestyle='--', label=f'{event_name} ({event_year})')
+        plt.axvline(event_year, color='maroon', linestyle='--', label=f'{event_name} ({event_year})')
 
     plt.title(f'Exponential Fit for {genre_name} Movies Over Time')
     plt.xlabel('Year')
