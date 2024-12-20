@@ -8,7 +8,8 @@ https://noushskadoush.github.io/adatched_data_story/
 
 This project explores the historical evolution of film genres, analyzing how societal and historical contexts have influenced trends in cinema.
 
-By analyzing the impact of major world events, we seek to understand how periods of conflict, economic upheaval, or stability shape genre popularity. For instance, we will investigate whether genres like war films or escapist comedies surge during turbulent times.
+By analyzing the impact of major world events, we seek to understand how periods of conflict, economic upheaval, or stability shape genre popularity. 
+For instance, we will investigate whether genres like war films or escapist comedies surge during turbulent times.
 
 The project's functionality is encapsulated in modular files, with key functions housed in src/utils/data_cleaning, src/utils/appendix and src/utils/visualization scripts for data handling and visual output.
 
