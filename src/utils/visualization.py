@@ -434,8 +434,8 @@ def plot_original_dataset(historical_events_df):
  
     
 def plot_manual_dataset(historical_events_df):
-    colors_location = ['#FFB5E8', '#85E3FF', '#B9FBC0', '#FFABAB', '#FFC3A0']
-    colors_impact = ['#FFB5E8', '#B28DFF', '#FFABAB']
+    colors_location = ['#7a3c3c', '#a15454', '#c4716c', '#dfa3a3', '#f4c6c6', '#fadada', '#ffecec']  # Dégradé bordeaux -> rose clair
+    colors_impact = ['#a15454', '#c4716c', '#f4c6c6']  # Palette pour l'impact avec dégradé similaire
 
     fig, axes = plt.subplots(1, 3, figsize=(15, 5))
 
@@ -451,11 +451,10 @@ def plot_manual_dataset(historical_events_df):
     axes[1].set_title("Events by Impact Type")
 
     # By Year
-    sns.histplot(data=historical_events_df, x='Year', bins=20, kde=True, color="lightblue", ax=axes[2])
+    sns.histplot(data=historical_events_df, x='Year', bins=20, kde=True, color="#f4c6c6", ax=axes[2])  # Rose pastel doux
     axes[2].set_title("Distribution of historical events by Year")
     axes[2].set_xlabel("Year")
     axes[2].set_ylabel("Number of events")
-
 
     plt.tight_layout()
     plt.show()
