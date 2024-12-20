@@ -10,6 +10,8 @@ This project explores the historical evolution of film genres, analyzing how soc
 
 By analyzing the impact of major world events, we seek to understand how periods of conflict, economic upheaval, or stability shape genre popularity. For instance, we will investigate whether genres like war films or escapist comedies surge during turbulent times. 
 
+To visualize our research and results, one can run the notebook results.ipynb and set up the environment using pip install -r pip_requirements.txt
+
 ## Research Questions:
 
 * How do major historical events influence trends in cinema genres?
