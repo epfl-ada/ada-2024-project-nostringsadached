@@ -7,8 +7,9 @@ import pandas as pd
 from scipy.stats import chisquare
 from sklearn.neighbors import KernelDensity
 from scipy.stats import norm
+from matplotlib.colors import ListedColormap
 
-def plot_boxplot(data, title, xlabel, figsize=(8, 1), color='lightblue', orient='h'):
+def plot_boxplot(data, title, xlabel, figsize=(8, 1), color='#f4a1a1', orient='h'):
     plt.figure(figsize=figsize)
     sns.boxplot(data, color=color, orient=orient)
     plt.title(title)
@@ -20,7 +21,7 @@ def plot_boxplot(data, title, xlabel, figsize=(8, 1), color='lightblue', orient=
 def plot_decade_histogram(movies):
     decade=(movies['Year'] // 10) * 10
     plt.figure(figsize=(8, 3))
-    decade.hist(bins=range(decade.min(), decade.max() + 10, 10), color='salmon', edgecolor='black')
+    decade.hist(bins=range(decade.min(), decade.max() + 10, 10), color='#f4a1a1', edgecolor='#c4716c')
     plt.xlabel("Decade")
     plt.ylabel("Number of movies")
     plt.xticks(range(decade.min(), decade.max() + 10, 10))
@@ -32,7 +33,7 @@ def plot_top_genres(genres,n):
     # Select the top n genres
     top_genres = genres.head(n)
     plt.figure(figsize=(7, 5))
-    top_genres.plot(kind='barh', color='#9370DB')
+    top_genres.plot(kind='barh', color='#f4a1a1')
     plt.xlabel('Number of movies')
     plt.title(f'Distribution of the {n} most widespread genres', fontsize=16)
     plt.gca().invert_yaxis()
@@ -68,7 +69,7 @@ def plot_average_genres_per_year(movies):
 
 def plot_war_movies(war_movies, all_movies):
     plt.figure(figsize=(8,4))
-    war_movies["Year"].hist(bins=50, range=(all_movies["Year"].min(), all_movies["Year"].max()), color = 'salmon', edgecolor = 'black')
+    war_movies["Year"].hist(bins=50, range=(all_movies["Year"].min(), all_movies["Year"].max()), color = '#f4a1a1', edgecolor = '#c4716c')
     plt.xlabel("Year")
     plt.ylabel("Number of war movies")
     plt.title("Number of war movies per year")
@@ -207,7 +208,20 @@ def plot_genre_trends_per_country(country,historical_data,movie_metadata):
         genre_handles.append(line)
 
     country_events = get_country_events(historical_data, country)
-    event_colors = plt.cm.tab20.colors 
+    #event_colors = plt.cm.tab20.colors 
+    pastel_colors = [
+    "#FFB3BA",  # Rose pastel
+    "#FFDFBA",  # Orange pastel
+    "#FFFFBA",  # Jaune pastel
+    "#BAE1FF",  # Bleu pastel
+    "#B9FBC0",  # Vert pastel
+    "#C9BBF6",  # Violet pastel
+    "#FFCCE5",  # Rose clair pastel
+    "#F7D9E1",  # Rose pâle
+    "#FFC3A0",  # Pêche pastel
+    "#E2F0CB",  # Vert clair pastel
+    ]
+    event_colors = ListedColormap(pastel_colors)
     event_handles = []
 
     for idx, (_, event) in enumerate(country_events.iterrows()):
@@ -404,42 +418,43 @@ def plot_selected_events(historical, movies, selected_events):
 
 
 def plot_original_dataset(historical_events_df):
-    colors_location = ['#FFB5E8', '#85E3FF', '#B9FBC0', '#FFABAB', '#FFC3A0']
+    colors_location = ['#7a3c3c', '#a15454', '#c4716c', '#dfa3a3', '#f4c6c6', '#fadada', '#ffecec']  
 
     fig, axes = plt.subplots(1, 3, figsize=(18, 5))
 
     # By Country
     country_counts = historical_events_df['Country'].value_counts()
-    country_counts = country_counts[country_counts > 10]  # Filtering countries with counts greater than 10
+    country_counts = country_counts[country_counts > 10]  
     axes[0].bar(country_counts.index, country_counts.values, color=colors_location[:len(country_counts)])
-    axes[0].set_title("Distribution of events by Country (contry with more than 10 events)")
+    axes[0].set_title("Distribution of events by Country (if containing more than 10 events)")
     axes[0].tick_params(axis='x', rotation=90)
 
     # By Year
-    sns.histplot(data=historical_events_df, x='Year', bins=20, kde=True, color="lightblue", ax=axes[1])
+    sns.histplot(data=historical_events_df, x='Year', bins=20, kde=True, color="#f4c6c6", ax=axes[1])
     axes[1].set_title("Distribution of historical events by Year")
     axes[1].set_xlabel("Year")
     axes[1].set_ylabel("Number of events")
 
     # By Type of Event
     e_types_counts = historical_events_df['Type of Event'].str.split(', ').explode().value_counts()
-    t_events = e_types_counts[e_types_counts > 10]  # Filtering events with counts greater than 15
+    t_events = e_types_counts[e_types_counts > 10]  # Filtering events with counts greater than 10
+    
     num_bars = len(t_events)
-    colors = plt.cm.rainbow(np.linspace(0, 1, num_bars))  # Color mapping for bars
-
-    # Plot Type of Events
-    axes[2].barh(t_events.index, t_events.values, color=colors)
-    axes[2].set_title('Distribution of the types of events(event with more than 10 occurences)')
-    axes[2].tick_params(axis='y', labelsize=8)  # Adjust y-tick label font size
-    axes[2].invert_yaxis()  # Invert the y-axis to have the highest values at the top
+    assigned_colors = colors_location[:num_bars]  
+    
+    axes[2].barh(t_events.index, t_events.values, color=assigned_colors)
+    axes[2].set_title('Distribution of the types of events (event with more than 10 occurrences)')
+    axes[2].tick_params(axis='y', labelsize=8)  #
+    axes[2].invert_yaxis()  
 
     plt.tight_layout()
     plt.show()
 
+
  
     
 def plot_manual_dataset(historical_events_df):
-    colors_location = ['#7a3c3c', '#a15454', '#c4716c', '#dfa3a3', '#f4c6c6', '#fadada', '#ffecec']  # Dégradé bordeaux -> rose clair
+    colors_location = ['#7a3c3c', '#a15454', '#c4716c', '#dfa3a3', '#f4c6c6', '#fadada', '#ffecec'] 
     colors_impact = ['#a15454', '#c4716c', '#f4c6c6']  # Palette pour l'impact avec dégradé similaire
 
     fig, axes = plt.subplots(1, 3, figsize=(15, 5))
