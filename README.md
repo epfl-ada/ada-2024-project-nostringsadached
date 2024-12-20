@@ -8,9 +8,11 @@ https://noushskadoush.github.io/adatched_data_story/
 
 This project explores the historical evolution of film genres, analyzing how societal and historical contexts have influenced trends in cinema.
 
-By analyzing the impact of major world events, we seek to understand how periods of conflict, economic upheaval, or stability shape genre popularity. For instance, we will investigate whether genres like war films or escapist comedies surge during turbulent times. 
+By analyzing the impact of major world events, we seek to understand how periods of conflict, economic upheaval, or stability shape genre popularity. For instance, we will investigate whether genres like war films or escapist comedies surge during turbulent times.
 
-To visualize our research and results, one can run the notebook results.ipynb and set up the environment using pip install -r pip_requirements.txt
+The project's functionality is encapsulated in modular files, with key functions housed in src/utils/data_cleaning, src/utils/appendix and src/utils/visualization scripts for data handling and visual output.
+
+To visualize our research and results, one can run the notebook results.ipynb and set up the environment using pip install -r pip_requirements.txt.
 
 ## Research Questions:
 
@@ -87,13 +89,12 @@ Create visualizations such as timelines, stacked area charts, and heatmaps to su
 
 ▪️ 09/12 - 20/12: 
 
-(Sarah, Diane) Worked on creating an initial global plot to provide a general overview and set the stage for transitioning into more specific analyses. Reformated the project structure.
+(Sarah) Worked on creating an initial global plot to provide a general overview and set the stage for transitioning into more specific analyses. Reformated the project structure.
+        Created a more relevant historical dataset manually with the help of a language model to overcome limitations of the original dataset and began conducting analyses and general visualizations to represent         both datasets together. Creation of additional plots to highlight the most relevant things for the website.
 
 (Laurine and Lucile) : further statistical analyses on case studies.
 
 (Diane) : Further investigation to identify new pairs of genres and events to refine the analysis. Investigated their relationship and created functions for the visualization, adding also statistical analyses.
-
-(Sarah) Created a more relevant historical dataset manually with the help of a language model to overcome limitations of the original dataset and began conducting analyses and general visualizations to represent both datasets together. Creation of additional plots to highlight the most relevant things for the website.
 
 (Nouchine) Creation of the website's framework. Wrote the Data Story website and filled it with text and figures from the notebook.
 
